@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "fNIRSAtlas"
+type: software
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/kalomak/fNIRSAtlas"
+abstract: "fNIRSAtlas is a Python package and benchmark for fNIRS classification. It downloads, preprocesses, and classifies public fNIRS datasets with a unified pipeline."
+authors:
+  - given-names: Kalle
+    family-names: Mäkelä
+    affiliation: LUT University
+    orcid: "https://orcid.org/0009-0005-5706-0842"
+keywords:
+  - fNIRS
+  - near-infrared spectroscopy
+  - benchmark
+  - classification
+  - machine learning
+preferred-citation:
+  type: conference-paper
+  title: "fNIRSAtlas: A Large-Scale Benchmark for Functional Near-Infrared Spectroscopy Classification"
+  authors:
+    - given-names: Kalle
+      family-names: Mäkelä
+      affiliation: LUT University
+    - given-names: Tuukka
+      family-names: Ruotsalo
+      affiliation: LUT University
+  collection-title: "Advances in Neural Information Processing Systems"
+  year: 2026

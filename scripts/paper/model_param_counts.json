@@ -1,0 +1,2208 @@
+{
+  "meta": {
+    "dataset": "bak2019",
+    "n_samples": 1500,
+    "total_channels": 40,
+    "n_chs": 20,
+    "n_ch_types": 2,
+    "n_timepoints": 76,
+    "sfreq": 5.0,
+    "n_classes": 2
+  },
+  "models": {
+    "lda": [
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_extractor__features": [
+            "mean"
+          ]
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_extractor__features": [
+            "slope"
+          ]
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_extractor__features": [
+            "std"
+          ]
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_extractor__features": [
+            "mean",
+            "slope"
+          ]
+        },
+        "n_params": 81,
+        "n_bytes": 324
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 3,
+          "param_extractor__features": [
+            "mean"
+          ]
+        },
+        "n_params": 121,
+        "n_bytes": 484
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 3,
+          "param_extractor__features": [
+            "slope"
+          ]
+        },
+        "n_params": 121,
+        "n_bytes": 484
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 3,
+          "param_extractor__features": [
+            "std"
+          ]
+        },
+        "n_params": 121,
+        "n_bytes": 484
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 3,
+          "param_extractor__features": [
+            "mean",
+            "slope"
+          ]
+        },
+        "n_params": 241,
+        "n_bytes": 964
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_extractor__features": [
+            "mean"
+          ]
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_extractor__features": [
+            "slope"
+          ]
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_extractor__features": [
+            "std"
+          ]
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_extractor__features": [
+            "mean",
+            "slope"
+          ]
+        },
+        "n_params": 401,
+        "n_bytes": 1604
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 15,
+          "param_extractor__features": [
+            "mean"
+          ]
+        },
+        "n_params": 601,
+        "n_bytes": 2404
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 15,
+          "param_extractor__features": [
+            "slope"
+          ]
+        },
+        "n_params": 601,
+        "n_bytes": 2404
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 15,
+          "param_extractor__features": [
+            "std"
+          ]
+        },
+        "n_params": 601,
+        "n_bytes": 2404
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 15,
+          "param_extractor__features": [
+            "mean",
+            "slope"
+          ]
+        },
+        "n_params": 1201,
+        "n_bytes": 4804
+      }
+    ],
+    "logreg": [
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 1e-05
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 0.01
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 1
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 100
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 1e-05
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 0.01
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 1
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 100
+        },
+        "n_params": 41,
+        "n_bytes": 164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 1e-05
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 0.01
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 1
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l1",
+          "param_clf__C": 100
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 1e-05
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 0.01
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 1
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__penalty": "l2",
+          "param_clf__C": 100
+        },
+        "n_params": 201,
+        "n_bytes": 804
+      }
+    ],
+    "svm": [
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 0.0001
+        },
+        "n_params": 61501,
+        "n_bytes": 492008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 0.001
+        },
+        "n_params": 61501,
+        "n_bytes": 492008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 0.01
+        },
+        "n_params": 61501,
+        "n_bytes": 492008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 0.1
+        },
+        "n_params": 61501,
+        "n_bytes": 492008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 1
+        },
+        "n_params": 60107,
+        "n_bytes": 480856
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 10
+        },
+        "n_params": 59041,
+        "n_bytes": 472328
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 100
+        },
+        "n_params": 59041,
+        "n_bytes": 472328
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__C": 1000
+        },
+        "n_params": 59041,
+        "n_bytes": 472328
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 0.0001
+        },
+        "n_params": 301501,
+        "n_bytes": 2412008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 0.001
+        },
+        "n_params": 301501,
+        "n_bytes": 2412008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 0.01
+        },
+        "n_params": 301501,
+        "n_bytes": 2412008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 0.1
+        },
+        "n_params": 301501,
+        "n_bytes": 2412008
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 1
+        },
+        "n_params": 298888,
+        "n_bytes": 2391104
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 10
+        },
+        "n_params": 300898,
+        "n_bytes": 2407184
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 100
+        },
+        "n_params": 300898,
+        "n_bytes": 2407184
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__C": 1000
+        },
+        "n_params": 300898,
+        "n_bytes": 2407184
+      }
+    ],
+    "rf": [
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 10,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 4616,
+        "n_bytes": 332352
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 10,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 4126,
+        "n_bytes": 297072
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 50,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 22944,
+        "n_bytes": 1651968
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 50,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 20380,
+        "n_bytes": 1467360
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 100,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 46034,
+        "n_bytes": 3314448
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 100,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 40796,
+        "n_bytes": 2937312
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 1000,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 461268,
+        "n_bytes": 33211296
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_estimators": 1000,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 406998,
+        "n_bytes": 29303856
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 10,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 3842,
+        "n_bytes": 276624
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 10,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 3448,
+        "n_bytes": 248256
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 50,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 18904,
+        "n_bytes": 1361088
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 50,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 17134,
+        "n_bytes": 1233648
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 100,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 37842,
+        "n_bytes": 2724624
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 100,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 34304,
+        "n_bytes": 2469888
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 1000,
+          "param_clf__min_samples_leaf": 1
+        },
+        "n_params": 376970,
+        "n_bytes": 27141840
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_estimators": 1000,
+          "param_clf__min_samples_leaf": 2
+        },
+        "n_params": 344270,
+        "n_bytes": 24787440
+      }
+    ],
+    "knn": [
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 1,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 1,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 3,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 3,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 5,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 5,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 7,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__n_neighbors": 7,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 60000,
+        "n_bytes": 240000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 1,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 1,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 3,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 3,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 5,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 5,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 7,
+          "param_clf__weights": "uniform"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 5,
+          "param_clf__n_neighbors": 7,
+          "param_clf__weights": "distance"
+        },
+        "n_params": 300000,
+        "n_bytes": 1200000
+      }
+    ],
+    "ann": [
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 1641,
+        "n_bytes": 6564
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 1641,
+        "n_bytes": 6564
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 20993,
+        "n_bytes": 83972
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 20993,
+        "n_bytes": 83972
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 1641,
+        "n_bytes": 6564
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 1641,
+        "n_bytes": 6564
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 20993,
+        "n_bytes": 83972
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 1,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 20993,
+        "n_bytes": 83972
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 80041,
+        "n_bytes": 320164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 80041,
+        "n_bytes": 320164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 1024513,
+        "n_bytes": 4098052
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "relu",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 1024513,
+        "n_bytes": 4098052
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 80041,
+        "n_bytes": 320164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            20
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 80041,
+        "n_bytes": 320164
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.001
+        },
+        "n_params": 1024513,
+        "n_bytes": 4098052
+      },
+      {
+        "params": {
+          "param_extractor__n_windows": 50,
+          "param_clf__activation": "tanh",
+          "param_clf__hidden_layer_sizes": [
+            256
+          ],
+          "param_clf__learning_rate_init": 0.01
+        },
+        "n_params": 1024513,
+        "n_bytes": 4098052
+      }
+    ],
+    "eegnet": [
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 346,
+        "n_bytes": 1384
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 402,
+        "n_bytes": 1608
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 2146,
+        "n_bytes": 8584
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 2370,
+        "n_bytes": 9480
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 346,
+        "n_bytes": 1384
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 402,
+        "n_bytes": 1608
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 2146,
+        "n_bytes": 8584
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 2370,
+        "n_bytes": 9480
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 346,
+        "n_bytes": 1384
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 402,
+        "n_bytes": 1608
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 2146,
+        "n_bytes": 8584
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 2370,
+        "n_bytes": 9480
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 346,
+        "n_bytes": 1384
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 4,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 402,
+        "n_bytes": 1608
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 3
+        },
+        "n_params": 2146,
+        "n_bytes": 8584
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__F1": 16,
+          "param_clf__kernel_size_1": 10
+        },
+        "n_params": 2370,
+        "n_bytes": 9480
+      }
+    ],
+    "dcn": [
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 1998,
+        "n_bytes": 7992
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 7438,
+        "n_bytes": 29752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 67077,
+        "n_bytes": 268308
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 277477,
+        "n_bytes": 1109908
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 1998,
+        "n_bytes": 7992
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 7438,
+        "n_bytes": 29752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 67077,
+        "n_bytes": 268308
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 277477,
+        "n_bytes": 1109908
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 1998,
+        "n_bytes": 7992
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 7438,
+        "n_bytes": 29752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 67077,
+        "n_bytes": 268308
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 277477,
+        "n_bytes": 1109908
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 1998,
+        "n_bytes": 7992
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 4,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 7438,
+        "n_bytes": 29752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 2
+        },
+        "n_params": 67077,
+        "n_bytes": 268308
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__D1": 25,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 277477,
+        "n_bytes": 1109908
+      }
+    ],
+    "fnirsnet23": [
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 2,
+          "param_clf__F2": 8
+        },
+        "n_params": 410,
+        "n_bytes": 1640
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 2,
+          "param_clf__F2": 16
+        },
+        "n_params": 466,
+        "n_bytes": 1864
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 2,
+          "param_clf__F2": 32
+        },
+        "n_params": 578,
+        "n_bytes": 2312
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 4,
+          "param_clf__F2": 8
+        },
+        "n_params": 778,
+        "n_bytes": 3112
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 4,
+          "param_clf__F2": 16
+        },
+        "n_params": 850,
+        "n_bytes": 3400
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 4,
+          "param_clf__F2": 32
+        },
+        "n_params": 994,
+        "n_bytes": 3976
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 8,
+          "param_clf__F2": 8
+        },
+        "n_params": 1514,
+        "n_bytes": 6056
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 8,
+          "param_clf__F2": 16
+        },
+        "n_params": 1618,
+        "n_bytes": 6472
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__F1": 8,
+          "param_clf__F2": 32
+        },
+        "n_params": 1826,
+        "n_bytes": 7304
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 2,
+          "param_clf__F2": 8
+        },
+        "n_params": 410,
+        "n_bytes": 1640
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 2,
+          "param_clf__F2": 16
+        },
+        "n_params": 466,
+        "n_bytes": 1864
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 2,
+          "param_clf__F2": 32
+        },
+        "n_params": 578,
+        "n_bytes": 2312
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 4,
+          "param_clf__F2": 8
+        },
+        "n_params": 778,
+        "n_bytes": 3112
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 4,
+          "param_clf__F2": 16
+        },
+        "n_params": 850,
+        "n_bytes": 3400
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 4,
+          "param_clf__F2": 32
+        },
+        "n_params": 994,
+        "n_bytes": 3976
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 8,
+          "param_clf__F2": 8
+        },
+        "n_params": 1514,
+        "n_bytes": 6056
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 8,
+          "param_clf__F2": 16
+        },
+        "n_params": 1618,
+        "n_bytes": 6472
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__F1": 8,
+          "param_clf__F2": 32
+        },
+        "n_params": 1826,
+        "n_bytes": 7304
+      }
+    ],
+    "fnirsnet24": [
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 27438,
+        "n_bytes": 109752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 57566,
+        "n_bytes": 230264
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 125214,
+        "n_bytes": 500856
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 195662,
+        "n_bytes": 782648
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 27438,
+        "n_bytes": 109752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 57566,
+        "n_bytes": 230264
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 125214,
+        "n_bytes": 500856
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 195662,
+        "n_bytes": 782648
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 27438,
+        "n_bytes": 109752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 57566,
+        "n_bytes": 230264
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 125214,
+        "n_bytes": 500856
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 195662,
+        "n_bytes": 782648
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 27438,
+        "n_bytes": 109752
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 4,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 57566,
+        "n_bytes": 230264
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 4
+        },
+        "n_params": 125214,
+        "n_bytes": 500856
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__temporal_filters": 20,
+          "param_clf__spatial_filters": 60
+        },
+        "n_params": 195662,
+        "n_bytes": 782648
+      }
+    ],
+    "cnn2a": [
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 73778,
+        "n_bytes": 295112
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 77746,
+        "n_bytes": 310984
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 117218,
+        "n_bytes": 468872
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 132322,
+        "n_bytes": 529288
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 73778,
+        "n_bytes": 295112
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 77746,
+        "n_bytes": 310984
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 117218,
+        "n_bytes": 468872
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 132322,
+        "n_bytes": 529288
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 73778,
+        "n_bytes": 295112
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 77746,
+        "n_bytes": 310984
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 117218,
+        "n_bytes": 468872
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.25,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 132322,
+        "n_bytes": 529288
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 73778,
+        "n_bytes": 295112
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 16,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 77746,
+        "n_bytes": 310984
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 3
+        },
+        "n_params": 117218,
+        "n_bytes": 468872
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__p_dropout": 0.5,
+          "param_clf__n_filters": 32,
+          "param_clf__kernel_size": 10
+        },
+        "n_params": 132322,
+        "n_bytes": 529288
+      }
+    ],
+    "fnirst": [
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 64,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 587986,
+        "n_bytes": 2351944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 64,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 587986,
+        "n_bytes": 2351944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 64,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 1705682,
+        "n_bytes": 6822728
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 64,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 1705682,
+        "n_bytes": 6822728
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 128,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 1172818,
+        "n_bytes": 4691272
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 128,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 1172818,
+        "n_bytes": 4691272
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 128,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 3407698,
+        "n_bytes": 13630792
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__dim": 128,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 3407698,
+        "n_bytes": 13630792
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 64,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 587986,
+        "n_bytes": 2351944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 64,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 587986,
+        "n_bytes": 2351944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 64,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 1705682,
+        "n_bytes": 6822728
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 64,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 1705682,
+        "n_bytes": 6822728
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 128,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 1172818,
+        "n_bytes": 4691272
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 128,
+          "param_clf__depth": 2,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 1172818,
+        "n_bytes": 4691272
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 128,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.0
+        },
+        "n_params": 3407698,
+        "n_bytes": 13630792
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__dim": 128,
+          "param_clf__depth": 6,
+          "param_clf__dropout": 0.3
+        },
+        "n_params": 3407698,
+        "n_bytes": 13630792
+      }
+    ],
+    "lstm": [
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 17986,
+        "n_bytes": 71944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 17986,
+        "n_bytes": 71944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 34882,
+        "n_bytes": 139528
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 34882,
+        "n_bytes": 139528
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 60546,
+        "n_bytes": 242184
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 60546,
+        "n_bytes": 242184
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 127106,
+        "n_bytes": 508424
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.01,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 127106,
+        "n_bytes": 508424
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 17986,
+        "n_bytes": 71944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 17986,
+        "n_bytes": 71944
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 34882,
+        "n_bytes": 139528
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 32,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 34882,
+        "n_bytes": 139528
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 60546,
+        "n_bytes": 242184
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 2,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 60546,
+        "n_bytes": 242184
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.25
+        },
+        "n_params": 127106,
+        "n_bytes": 508424
+      },
+      {
+        "params": {
+          "param_clf__lr": 0.001,
+          "param_clf__hidden_size": 64,
+          "param_clf__num_layers": 4,
+          "param_clf__p_dropout": 0.5
+        },
+        "n_params": 127106,
+        "n_bytes": 508424
+      }
+    ],
+    "aeon_multirockethydra": [
+      {
+        "params": {
+          "param_clf__n_kernels": 2,
+          "param_clf__n_groups": 8
+        },
+        "n_params": 49857,
+        "n_bytes": 398856
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 2,
+          "param_clf__n_groups": 16
+        },
+        "n_params": 49985,
+        "n_bytes": 399880
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 2,
+          "param_clf__n_groups": 64
+        },
+        "n_params": 50753,
+        "n_bytes": 406024
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 2,
+          "param_clf__n_groups": 128
+        },
+        "n_params": 51777,
+        "n_bytes": 414216
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 4,
+          "param_clf__n_groups": 8
+        },
+        "n_params": 49985,
+        "n_bytes": 399880
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 4,
+          "param_clf__n_groups": 16
+        },
+        "n_params": 50241,
+        "n_bytes": 401928
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 4,
+          "param_clf__n_groups": 64
+        },
+        "n_params": 51777,
+        "n_bytes": 414216
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 4,
+          "param_clf__n_groups": 128
+        },
+        "n_params": 53825,
+        "n_bytes": 430600
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 8,
+          "param_clf__n_groups": 8
+        },
+        "n_params": 50241,
+        "n_bytes": 401928
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 8,
+          "param_clf__n_groups": 16
+        },
+        "n_params": 50753,
+        "n_bytes": 406024
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 8,
+          "param_clf__n_groups": 64
+        },
+        "n_params": 53825,
+        "n_bytes": 430600
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 8,
+          "param_clf__n_groups": 128
+        },
+        "n_params": 57921,
+        "n_bytes": 463368
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 32,
+          "param_clf__n_groups": 8
+        },
+        "n_params": 51777,
+        "n_bytes": 414216
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 32,
+          "param_clf__n_groups": 16
+        },
+        "n_params": 53825,
+        "n_bytes": 430600
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 32,
+          "param_clf__n_groups": 64
+        },
+        "n_params": 66113,
+        "n_bytes": 528904
+      },
+      {
+        "params": {
+          "param_clf__n_kernels": 32,
+          "param_clf__n_groups": 128
+        },
+        "n_params": 82497,
+        "n_bytes": 659976
+      }
+    ]
+  }
+}

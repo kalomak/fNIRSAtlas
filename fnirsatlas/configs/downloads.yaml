@@ -1,0 +1,188 @@
+# MA suite:
+
+bnci:
+  type: automatic
+  parts: ["01", "02", "03", "04", "05", "06", "07", "08"]
+  url: https://bnci-horizon-2020.eu/database/data-sets/003-2014/S{part}.mat
+  destination: datasets/BNCI/data/
+  filename: S{part}.mat
+
+shin2019:
+  type: automatic
+  url: https://ndownloader.figshare.com/files/16753760
+  destination: datasets/Shin2019/
+  filename: NIRS data_Shin et al. (fninf 2009).zip
+  extractions:
+    - archive: NIRS data_Shin et al. (fninf 2009).zip
+      destination: ./
+
+shin2018b:
+  type: automatic
+  url: https://ndownloader.figshare.com/files/10515928
+  destination: datasets/Shin2018b/
+  filename: Shin2018b.zip
+  extractions:
+    - archive: Shin2018b.zip
+      destination: matdata
+
+shin2016:
+  type: automatic
+  # License: GNU GPL, https://doc.ml.tu-berlin.de/hBCI/
+  url: https://doc.ml.tu-berlin.de/hBCI/NIRS/NIRS_01-29.zip
+  destination: datasets/Shin2016/
+  filename: NIRS_01-29.zip
+  extractions:
+    - archive: NIRS_01-29.zip
+      destination: ./
+
+# Motor suite:
+
+bak2019:
+  type: automatic
+  url: https://ndownloader.figshare.com/files/18069143
+  destination: datasets/Bak2019/
+  filename: Bak2019.zip
+  extractions:
+    - archive: Bak2019.zip
+      destination: data
+
+cockx2023:
+  type: automatic
+  url: https://data.ru.nl/api/collectionfiles/di/id/di_231884707/files/download
+  destination: datasets/Cockx2023/
+  filename: Cockx2023.tar.gz
+  size: 656MB
+  extractions:
+    - archive: Cockx2023.tar.gz
+      destination: ./
+
+ortega2020:
+  type: automatic
+  url: https://ndownloader.figshare.com/files/22837760
+  destination: datasets/Ortega2020/
+  filename: hygrip.h5
+
+luke2021:
+  type: automatic
+  url: https://zenodo.org/api/records/6575155/files/rob-luke/BIDS-NIRS-Tapping-v0.1.0.zip/content
+  destination: datasets/Luke2021/
+  filename: Luke2021.zip
+  size: 43.8MB
+  extractions:
+    - archive: Luke2021.zip
+      destination: ./
+  renames:
+    - from: rob-luke-BIDS-NIRS-Tapping-e262df8
+      to: data/
+
+buccino2016:
+  type: automatic
+  parts: ["2601537", "2601481"]
+  url: https://ndownloader.figshare.com/files/{part}
+  destination: datasets/Buccino2016/
+  filename: Buccino2016_{part}.zip
+  extractions:
+    - archive: Buccino2016_{part}.zip
+      destination: ./
+
+guevara2024:
+  type: automatic
+  url: https://zenodo.org/api/records/7966830/files/fNIRS_Parkinson.zip/content
+  destination: datasets/Guevara2024/
+  filename: Guevara2024.zip
+  size: 284MB
+  extractions:
+    - archive: Guevara2024.zip
+      destination: data
+
+luke2024b:
+  type: automatic
+  url: https://osf.io/download/juxy8/
+  destination: datasets/Luke2024b/
+  filename: FRESH-Motor.zip
+  extractions:
+    - archive: FRESH-Motor.zip
+      destination: ./
+  renames:
+    - from: FRESH-Motor
+      to: data
+
+gao2024:
+  type: automatic
+  url: https://github.com/OpenNeuroDatasets/ds007420.git
+  destination: datasets/Gao2024/data/
+
+
+# N-back suite:
+
+shin2018:
+  type: automatic
+  url: https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/NIRS_01-26_MATLAB.zip
+  destination: datasets/Shin2018/
+  filename: Shin2018.zip
+  extractions:
+    - archive: Shin2018.zip
+      destination: data
+
+huang2021:
+  type: automatic
+  # Mirror of https://tufts.app.box.com/s/1e0831syu1evlmk9zx2pukpl3i32md6r (whole_data, filter 0.001-0.2hz), CC-BY-4.0
+  url: https://zenodo.org/records/23635491/files/whole_data.zip?download=1
+  destination: datasets/Huang2021/
+  filename: whole_data.zip
+  size: 75MB
+  extractions:
+    - archive: whole_data.zip
+      destination: ./
+
+herff2014:
+  type: request
+  url: https://www.csl.uni-bremen.de/CorpusData/download.php?crps=fNIRS;
+  destination: datasets/Herff2014/
+
+# Motor imagery suite:
+
+yi2025:
+  type: automatic
+  url: https://ndownloader.figshare.com/files/42320127
+  destination: datasets/Yi2025/
+  filename: Yi2025.zip
+  extractions:
+    - archive: Yi2025.zip
+      destination: ./
+
+# Emotion recognition suite:
+
+nemo:
+  type: automatic
+  url: https://osf.io/download/pfst8/
+  destination: datasets/NEMO
+  filename: nemo.zip
+  extractions:
+    - archive: nemo.zip
+      destination: ./
+
+# MISC
+
+shader2021: # audio|video|control
+  type: automatic
+  url: https://osf.io/download/xwerv/
+  destination: datasets/Shader2021
+  filename: Shader2021.zip
+  extractions:
+    - archive: Shader2021.zip
+      destination: ./
+
+# shin2018 (already in N-back suite) # word generation|rest
+
+luke2024a:
+  type: automatic
+  url: https://osf.io/download/xd2qm/
+  destination: datasets/Luke2024a/
+  filename: FRESH-Audio.zip
+  extractions:
+    - archive: FRESH-Audio.zip
+      destination: ./
+  renames:
+    - from: FRESH-Audio
+      to: data

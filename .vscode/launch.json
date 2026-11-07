@@ -1,0 +1,114 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Current file",
+      "type": "debugpy",
+      "justMyCode": false,
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "env": {
+        "FNIRSATLAS_LOG_LEVEL": "INFO"
+      }
+    },
+    {
+      "name": "classify",
+      "type": "debugpy",
+      "justMyCode": false,
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/examples/classify.py",
+      "args": ["${input:dataset_name}", "--overwrite"],
+      "console": "integratedTerminal",
+      "env": {
+        "FNIRSATLAS_LOG_LEVEL": "INFO"
+      }
+    },
+    {
+      "name": "process_dataset",
+      "type": "debugpy",
+      "justMyCode": false,
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/process_dataset.py",
+      "args": ["-d", "${input:dataset_name}", "--override"],
+      "console": "integratedTerminal",
+      "env": {
+        "FNIRSATLAS_LOG_LEVEL": "INFO"
+      }
+    },
+    {
+      "name": "classify_all",
+      "type": "debugpy",
+      "justMyCode": false,
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/classify_all.py",
+      "args": ["--datasets", "${input:dataset_name}", "--n_jobs", "1"],
+      "console": "integratedTerminal",
+      "env": {
+        "FNIRSATLAS_LOG_LEVEL": "INFO"
+      }
+    },
+    {
+      "name": "run_all",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/run_all.py",
+      "args": [
+        "--datasets",
+        "${input:dataset_name}",
+        "--n_jobs",
+        "1",
+        "--log-level",
+        "INFO"
+      ],
+      "console": "integratedTerminal",
+      "env": {
+        "FNIRSATLAS_LOG_LEVEL": "INFO"
+      }
+    },
+    {
+      "name": "check_overlap",
+      "type": "debugpy",
+      "justMyCode": false,
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/checks/check_overlap.py",
+      "args": ["--dataset", "${input:dataset_name}"],
+      "console": "integratedTerminal",
+      "env": {
+        "FNIRSATLAS_LOG_LEVEL": "INFO"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "dataset_name",
+      "description": "Dataset name",
+      "type": "pickString",
+      "options": [
+        "cockx2023",
+        "shin2019__ma",
+        "shin2019__mi",
+        "shin2018b",
+        "shin2018__wg",
+        "shin2018__nback",
+        "shin2016__ma",
+        "shin2016__mi",
+        "ortega2020",
+        "nemo__afim",
+        "nemo__empe",
+        "shader2021",
+        "luke2021",
+        "bak2019",
+        "yi2025",
+        "bnci",
+        "buccino2016",
+        "guevara2024",
+        "huang2021",
+        "herff2014",
+        "luke2024a",
+        "luke2024b",
+        "gao2024",
+      ]
+    }
+  ]
+}

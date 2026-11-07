@@ -1,0 +1,17 @@
+# Blocked CV overlay: contiguous within-subject test folds.
+# Used by scripts/checks/blocked_cv.py, and for the full within-subject grid
+# run with blocked CV:
+#   FNIRSATLAS_CONFIG=fnirsatlas/configs/blocked_cv_gap0.yaml python scripts/classify_dataset.py -d <dataset> -m <model> -c within --seed <seed> --search-strategy block
+paths:
+  results_cache: "~/mne_data/fnirsatlas/results_blocked_gap0"
+cv:
+  within:
+    class: fnirsatlas.model_selection.BlockedKFold
+    kwargs:
+      n_splits: 5
+      shuffle: false
+      random_state: null
+      gap: 0
+      min_test_size: 1
+      class_balance_warning_threshold: 0.2
+      past_only: false

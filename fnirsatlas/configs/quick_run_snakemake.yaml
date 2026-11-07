@@ -1,0 +1,57 @@
+datasets:
+  - luke2021 # motor
+  - bnci # mental arithmetic
+  - shin2018__nback # n-back
+  - nemo__empe # emotion
+  - shin2019__mi # motor imagery
+models:
+  - lda
+  - fnirsnet23
+  - eegnet
+seeds: [42]
+# Classification setting: search strategy
+settings:
+  cross: none
+n_jobs: 1
+log_level: INFO
+
+# Full benchmark. Not recommended without a cluster. To run it, replace the matching keys above.
+# datasets:
+#   - buccino2016
+#   - bak2019
+#   - ortega2020
+#   - luke2021
+#   - cockx2023
+#   - guevara2024
+#   - luke2024b
+#   - gao2024
+#   - bnci
+#   - shin2016__ma
+#   - shin2018b
+#   - shin2019__ma
+#   - shin2016__mi
+#   - shin2019__mi
+#   - yi2025
+#   - herff2014
+#   - shin2018__nback
+#   - huang2021
+#   - nemo__empe
+#   - nemo__afim
+#   - shin2018__wg
+#   - shader2021
+#   - luke2024a
+# models:
+#   - lda
+#   - ann
+#   - cnn2a
+#   - lstm
+#   - eegnet
+#   - dcn
+#   - aeon_multirockethydra
+#   - fnirst
+#   - fnirsnet23
+#   - fnirsnet24
+# seeds: [0, 1, 2, 3, 4]
+# settings:
+#   cross: nested
+#   within: block

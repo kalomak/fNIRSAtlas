@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools >= 77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fnirsatlas"
+version = "0.1.0"
+description = "Parse, preprocess, and classify fNIRS datasets"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Kalle Mäkelä" }]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+process = [
+    "mne>=1.13",
+    "mne-bids",
+    "mne-nirs",
+    "dill",
+    "datalad",
+    "chardet<6",
+    "git-annex",
+    "requests",
+    "tqdm",
+]
+classify = [
+    "scikit-learn",
+    "scikit-posthocs",
+    "scipy",
+    "statsmodels",
+    "pandas",
+    "tqdm",
+    "joblib",
+]
+dl = [
+    "torch",
+    "einops",
+]
+cli = [
+    "rich",
+]
+workflow = [
+    "snakemake",
+    "snakemake-logger-plugin-rich",
+]
+aeon = [
+    "aeon>=1.0.0",
+]
+
+all = [
+    "fnirsatlas[process]",
+    "fnirsatlas[classify]",
+    "fnirsatlas[dl]",
+    "fnirsatlas[cli]",
+    "fnirsatlas[workflow]",
+    "fnirsatlas[aeon]",
+]
+
+[project.urls]
+Homepage = "https://github.com/kalomak/fNIRSAtlas"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff>=0.17.3",
+]
+
+[tool.setuptools.packages.find]
+include = ["fnirsatlas*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+fnirsatlas = ["configs/*.yaml", "montages/*"]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: slow tests that require datasets or longer training runs",
+]
