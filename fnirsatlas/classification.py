@@ -607,6 +607,10 @@ def classify_task(
         Dictionary containing results for the task
     """
     # Load data if not provided
+    if classification_setting not in SEARCH_STRATEGIES:
+        raise ValueError(
+            f"classification_setting must be one of {sorted(SEARCH_STRATEGIES)}, got {classification_setting!r}"
+        )
     if X is None or y is None or groups is None or info is None:
         processed_dir = get_processed_datasets_dir()
         X, y, groups, info = load_processed_dataset(
