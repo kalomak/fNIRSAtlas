@@ -1,5 +1,7 @@
 # fNIRSAtlas
 
+[![PyPI](https://img.shields.io/pypi/v/fnirsatlas)](https://pypi.org/project/fnirsatlas/)
+
 fNIRSAtlas is a Python package for parsing, preprocessing, and classifying fNIRS datasets with a unified, extensible structure. It provides the largest fNIRS benchmark with multiple suites (motor, Mental Arithmetic (MA), Motor Imagery (MI), Emotion, MISC) and fully automatic pipeline from raw data to classification. The processed data can be easily exported with no dependencies.
 
 ## Table of Contents
