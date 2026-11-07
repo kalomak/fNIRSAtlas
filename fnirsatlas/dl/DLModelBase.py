@@ -30,6 +30,8 @@ class DLModelBase(nn.Module, BaseEstimator, ClassifierMixin):
         **kwargs,
     ):
         super().__init__()
+        if kwargs:
+            logger.warning(f"{type(self).__name__} ignores unknown parameters: {sorted(kwargs)}")
         self.lr = lr
         self.lr_step_size = lr_step_size
         self.lr_gamma = lr_gamma

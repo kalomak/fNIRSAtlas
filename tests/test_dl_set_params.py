@@ -24,3 +24,9 @@ def test_eegnet_clone_after_set_params_rebuilds_layers():
     assert _get_conv_kernel_size(net) == (1, 10), (
         "clone after set_params did not rebuild layers with new kernel_size_1"
     )
+
+
+def test_unknown_init_parameter_warns(caplog):
+    EEGNet(4, 64, 2, normalize=True)
+
+    assert "normalize" in caplog.text
