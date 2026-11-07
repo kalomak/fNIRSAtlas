@@ -343,6 +343,7 @@ After processing ([see how](#usage)), processed data is saved to `paths.processe
 You can load datasets with the IO API:
 
 ```python
+import numpy as np
 from fnirsatlas.io import fNIRSAtlasDataset
 
 ds = fNIRSAtlasDataset("bnci")  # or fNIRSAtlasDataset("/path/to/bnci_processed.npz")
