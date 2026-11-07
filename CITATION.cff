@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite the paper below."
 title: "fNIRSAtlas"
 type: software
-version: 0.1.0
+version: 0.1.1
 license: MIT
 repository-code: "https://github.com/kalomak/fNIRSAtlas"
 abstract: "fNIRSAtlas is a Python package and benchmark for fNIRS classification. It downloads, preprocesses, and classifies public fNIRS datasets with a unified pipeline."
