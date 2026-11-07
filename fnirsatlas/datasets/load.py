@@ -4,11 +4,8 @@ import logging
 from pathlib import Path
 import numpy as np
 from fnirsatlas.io.processed_dataset import load_processed_dataset
-from fnirsatlas.processed_dataset import to_dataset
-from fnirsatlas.load_parser import load_parser
 from fnirsatlas.config import get_processed_datasets_dir
-from fnirsatlas.utils import check_data_exists
-from fnirsatlas.parsers import get_parser_class
+from fnirsatlas.utils import get_processed_data_path
 
 logger = logging.getLogger(__name__)
 
@@ -38,16 +35,21 @@ def load_dataset(
         logger.info(f"Loading processed dataset from file: {p}")
         return load_processed_dataset(p)
 
-    # Resolve base dataset name into a canonical id with default experiment if needed
-    dataset_name = resolve_dataset_id(p.name.lower())
-    state = check_data_exists(dataset_name)
+    dataset_name = p.name.lower()
+    # Resolve a base name to its default experiment, e.g. shin2016 -> shin2016__ma.
+    # Skipped if processed data exists under the given name, since resolving imports the parsers.
+    if not get_processed_data_path(dataset_name).exists():
+        dataset_name = resolve_dataset_id(dataset_name)
 
-    if state.get("processed_exists", False):
+    processed_file = get_processed_data_path(dataset_name)
+    if processed_file.exists():
         logger.info(f"Loading processed dataset: {dataset_name}")
-        processed_file = get_processed_datasets_dir() / f"{dataset_name}_processed.npz"
         return load_processed_dataset(processed_file)
 
-    # Process from raw
+    # Building from raw needs the `process` extra (mne). Reading processed data does not.
+    from fnirsatlas.load_parser import load_parser
+    from fnirsatlas.processed_dataset import to_dataset
+
     logger.info(f"Processed dataset not found for {dataset_name}. Building from raw...")
     parser = load_parser(dataset_name, download=download)
     subject_ids = parser.get_subject_ids()
@@ -72,6 +74,8 @@ def resolve_dataset_id(base_name: str) -> str:
         return base_name
 
     try:
+        from fnirsatlas.parsers import get_parser_class
+
         parser_cls = get_parser_class(base_name)
         experiments = getattr(parser_cls, "EXPERIMENTS", []) or []
         if len(experiments) == 0:
