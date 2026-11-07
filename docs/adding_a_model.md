@@ -48,7 +48,7 @@ def create_your_model_pipeline(**kwargs):
         ("scaler", StandardScalerND()),
         ("clf", YourModel(
             n_chs, T, n_ch_types,
-            num_classes=num_classes, normalize=False, batch_size=batch_size,
+            num_classes=num_classes, batch_size=batch_size,
         )),
     ])
 ```

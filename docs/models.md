@@ -175,7 +175,7 @@ This built-in baseline is a simple approximation inspired by `naseer2015comparis
 Pipeline([
 	("ch_splitter", ChannelSplitter(ch_names=ch_names)),
 	("scaler", StandardScalerND(dim=(0, 2, 3))),
-	("clf", EEGNet(n_chs, T, n_ch_types, normalize=False, **kwargs)),
+	("clf", EEGNet(n_chs, T, n_ch_types, **kwargs)),
 ])
 ```
 

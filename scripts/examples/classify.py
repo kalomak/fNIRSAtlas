@@ -3,7 +3,6 @@ Demo script for processing and classifying any supported dataset.
 """
 
 import logging
-from pathlib import Path
 import numpy as np
 import argparse
 from sklearn.preprocessing import StandardScaler
@@ -16,6 +15,7 @@ from fnirsatlas.load_parser import load_parser
 from fnirsatlas.processed_dataset import to_dataset
 from fnirsatlas.feature_extraction import WindowedFeatureExtractor
 from fnirsatlas.logging import setup_logging
+from fnirsatlas.utils import get_processed_data_path
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -33,7 +33,7 @@ aparser.add_argument(
 args = aparser.parse_args()
 dataset_name = args.dataset_name
 
-processed_dataset_path = Path("processed_datasets") / f"{dataset_name}_processed.npz"
+processed_dataset_path = get_processed_data_path(dataset_name)
 processed_dataset_path.parent.mkdir(parents=True, exist_ok=True)
 
 if not processed_dataset_path.exists() or args.overwrite:

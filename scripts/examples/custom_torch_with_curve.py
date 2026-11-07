@@ -10,8 +10,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from fnirsatlas.dl.DLModelBase import DLModelBase
 from fnirsatlas.feature_extraction import ChannelSplitter, StandardScalerND
-from fnirsatlas.config import get_classification_tasks, get_results_dir
-from fnirsatlas.utils import get_processed_data_path
+from fnirsatlas.config import get_results_dir
+from fnirsatlas.io import fNIRSAtlasDataset
 
 seeds = [42, 43, 44, 45, 46]
 np.random.seed(seeds[0])
@@ -38,19 +38,11 @@ class SimpleNet(DLModelBase):
 
 # Load data
 dataset_name = "bnci"
-data = np.load(get_processed_data_path(dataset_name), allow_pickle=True)
-X, y, groups, info = data["X"], data["y"], data["groups"], data["info"].item()
+# set_task() keeps the conditions of the first classification task and maps them to class labels
+X, y, groups, info = fNIRSAtlasDataset(dataset_name).set_task().as_tuple()
 
 # Split channels (n, c, t) -> (n, ch_type, c/2, t)
 X = ChannelSplitter(info["ch_names"]).fit_transform(X)
-
-# Remap y according to the first classification task
-label2cond = {v: k for k, v in info["cond2label"].items()}
-conds = [label2cond[y_i] for y_i in y]
-clf_task_mapping = get_classification_tasks(dataset_name, info["cond2label"])[0][
-    "mapping"
-]
-y = np.array([clf_task_mapping[cond] for cond in conds])
 
 # Parameters for the model
 _, _, n_chs, T = X.shape

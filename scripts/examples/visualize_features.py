@@ -1,13 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from pathlib import Path
+from fnirsatlas.utils import get_processed_data_path
 from fnirsatlas.processed_dataset import load_processed_dataset
 from fnirsatlas.load_parser import load_parser
 from fnirsatlas.feature_extraction import WindowedFeatureExtractor
 
 # Load BNCI dataset
 print("Loading BNCI dataset...")
-dataset_file = Path("processed_datasets") / "bnci_processed.npz"
+dataset_file = get_processed_data_path("bnci")
 X, y, groups, info = load_processed_dataset(dataset_file)
 parser = load_parser("bnci", download="no")
 
