@@ -5,7 +5,7 @@ title: "[Dataset] <first author><year>: <task>"
 labels: dataset request
 ---
 
-To add the dataset yourself, follow [Adding a dataset](https://github.com/kalomak/fNIRSAtlas/blob/main/docs/adding_a_dataset.md) and mention this issue in the pull request.
+To add the dataset yourself, follow [Adding a dataset](https://github.com/kalomak/fNIRSAtlas/blob/main/docs/adding_datasets.md) and mention this issue in the pull request.
 
 **Paper** (title or DOI):
 
@@ -25,4 +25,4 @@ To add the dataset yourself, follow [Adding a dataset](https://github.com/kaloma
 
 **Data type** (raw intensity, optical density, or haemoglobin concentration):
 
-**Will you implement the parser and open a pull request?** (yes/no)
+**Will you implement the dataset class and open a pull request?** (yes/no)

@@ -18,13 +18,13 @@ Open an [issue](https://github.com/kalomak/fNIRSAtlas/issues/new/choose) before 
    ```bash
    git clone https://github.com/<your-username>/fNIRSAtlas
    cd fNIRSAtlas
-   uv sync --extra all --group dev
+   uv sync --all-extras --group dev
    ```
 
 3. Make the change. Guides:
-   - [Adding a dataset](docs/adding_a_dataset.md)
-   - [Classification tasks](docs/classification_tasks.md)
-   - [Adding a model](docs/adding_a_model.md)
+   - [Adding a dataset](docs/adding_datasets.md)
+   - [Paradigms](docs/paradigms.md)
+   - [Adding a model](docs/custom_models.md)
 4. Run the tests:
 
    ```bash
