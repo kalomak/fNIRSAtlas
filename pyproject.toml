@@ -49,7 +49,7 @@ mne = { git = "https://github.com/mne-tools/mne-python", branch = "main" }
 moabb = { git = "https://github.com/NeuroTechX/moabb", branch = "develop" }
 
 [tool.pytest.ini_options]
-addopts = "-m 'not manual'"
+addopts = "-m 'not manual and not data'"
 markers = [
     "data: tests requiring real dataset files",
     "manual: tests run only when selected with -m manual",

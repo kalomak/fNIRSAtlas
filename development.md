@@ -16,9 +16,10 @@ Add `--extra dl` or `--extra braindecode` when working on those integrations.
 uv run pytest
 ```
 
-Tests marked `manual` require local data and are excluded by default.
+Tests marked `data` download real datasets. Tests marked `manual` are slow checks run on demand. Both are excluded by default.
 
 ```bash
+uv run pytest -m data
 uv run pytest -m manual
 ```
 

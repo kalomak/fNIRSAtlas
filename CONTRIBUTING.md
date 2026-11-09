@@ -31,4 +31,6 @@ Open an [issue](https://github.com/kalomak/fNIRSAtlas/issues/new/choose) before 
    uv run pytest
    ```
 
+   This runs the offline tests. For a new or changed dataset, also run its data tests, which download the dataset: `uv run pytest -m "data or manual" tests/test_<dataset>.py`.
+
 5. Open a pull request against `main`. Reference the related issue and describe how the change was checked.
