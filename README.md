@@ -1,5 +1,7 @@
 # fnirsatlas
 
+[![PyPI](https://img.shields.io/pypi/v/fnirsatlas)](https://pypi.org/project/fnirsatlas/)
+
 fnirsatlas is the largest fNIRS dataset collection and benchmark.
 
 ## Features
@@ -67,33 +69,25 @@ Runnable examples are in `examples/`.
 
 See the [documentation](docs/index.rst).
 
-## Cite FNIRSAtlas
+## Contributing
 
-If you use FNIRSAtlas in your experiments, please cite the software and related publication.
+See [Contributing](CONTRIBUTING.md). In short:
+- Make a bug report or feature request [here](https://github.com/kalomak/fNIRSAtlas/issues)
+- [Create a pull request](https://github.com/kalomak/fNIRSAtlas/pulls) for a fix, feature etc.
+- [Request a dataset or report a correction](https://github.com/kalomak/fNIRSAtlas/issues/new/choose) to a dataset or task
+- [Add a new dataset](docs/adding_datasets.md) through a pull request
+- Contact the author if you need help with any of the above or have any questions
 
-### Software Citation
-
-#### APA Format
-
-```text
-Mäkelä, K. (2026). FNIRSAtlas: A Large-Scale Benchmark Suite for Near-Infrared
-Spectroscopy Analysis (Version 0.1.0) [Computer software].
-```
-
-#### BibTeX Format
+## Citation
 
 ```bibtex
-@software{Makela_FNIRSAtlas_2026,
-  author  = {Mäkelä, Kalle},
-  title   = {FNIRSAtlas: A Large-Scale Benchmark Suite for Near-Infrared Spectroscopy Analysis},
-  year    = {2026},
-  version = {0.1.0},
+@inproceedings{makela2026fnirsatlas,
+  title     = {{fNIRSAtlas}: A Large-Scale Benchmark for Functional Near-Infrared Spectroscopy Classification},
+  author    = {M{\"a}kel{\"a}, Kalle and Ruotsalo, Tuukka},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026}
 }
 ```
-
-### Scientific Publication
-
-TBD.
 
 ## Development
 
