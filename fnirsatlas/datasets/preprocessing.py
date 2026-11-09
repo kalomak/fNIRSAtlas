@@ -798,7 +798,7 @@ def _drop_bad_epochs(
         too_bad &= n_good_pairs < min_good_pairs
     dropped = np.flatnonzero(too_bad)
     if len(dropped):
-        logger.warning(
+        logger.info(
             "Dropping %d of %d epochs with more than %.0f%% bad fNIRS channels"
             " and fewer than %s good source-detector pairs",
             len(dropped),
