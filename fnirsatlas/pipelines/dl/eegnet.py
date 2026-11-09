@@ -1,3 +1,5 @@
+# Adapted from https://github.com/tufts-ml/fNIRS-mental-workload-classifiers (MIT, Copyright (c) 2021 Tufts Machine Learning).
+
 """EEGNet adapted to chromophore-split fNIRS arrays."""
 
 import torch

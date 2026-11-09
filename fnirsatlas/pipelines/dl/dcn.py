@@ -1,3 +1,5 @@
+# Adapted from https://github.com/tufts-ml/fNIRS-mental-workload-classifiers (MIT, Copyright (c) 2021 Tufts Machine Learning).
+
 """Deep convolutional network for chromophore-split fNIRS epochs."""
 
 from torch import nn

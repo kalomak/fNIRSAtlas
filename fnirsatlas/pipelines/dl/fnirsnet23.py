@@ -1,3 +1,5 @@
+# Adapted from https://github.com/wzhlearning/fNIRSNet (Apache-2.0).
+
 """fNIRSNet23 architecture for chromophore-split fNIRS arrays."""
 
 from torch import nn

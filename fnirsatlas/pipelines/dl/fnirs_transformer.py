@@ -1,3 +1,5 @@
+# Adapted from https://github.com/wzhlearning/fNIRS-Transformer (MIT, Copyright (c) 2021 wzhlearning).
+
 """Dual-branch fNIRS-T based on Zenghui Wang's reference implementation.
 
 Reference: https://github.com/wzhlearning/fNIRS-Transformer/blob/main/model.py
