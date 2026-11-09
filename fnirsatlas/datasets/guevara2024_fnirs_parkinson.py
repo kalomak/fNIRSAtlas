@@ -19,6 +19,7 @@ from .metadata import FnirsAcquisitionMetadata
 from .preprocessing import _crop_leading_clipped_samples
 from .utils import (
     deduplicate_annotations,
+    download_lock,
     extract_archive,
     override_raw_sfreq,
     paired_fnirs_channel_order,
@@ -26,7 +27,7 @@ from .utils import (
 )
 
 MONTAGE_PATH = Path(__file__).parent / "montages" / "guevara2024_montage_3d.json"
-URL = "https://zenodo.org/api/records/7966830/files-archive"
+URL = "https://zenodo.org/api/records/7966830/files/fNIRS_Parkinson.zip/content"
 CODE = "Guevara2024FnirsParkinson"
 DOI = "10.1117/1.NPh.11.2.025004"
 SUBJECTS = list(range(1, 21))
@@ -192,17 +193,15 @@ class Guevara2024FnirsParkinson(BaseFNIRSDataset):
         base = cache / "Guevara2024"
         subject_id = f"Control{subject:02d}"
         expected = base / "data/finger_tapping/Control" / subject_id
-        if expected.is_dir() and not force_update:
-            return base / "data"
-        archive_path = Path(dl.data_dl(URL, CODE, path, force_update, verbose))
-        if base.is_dir():
-            shutil.rmtree(base)
-        base.mkdir(parents=True)
-        extract_archive(archive_path, base)
-        nested = base / "fNIRS_Parkinson.zip"
-        if not nested.is_file():
-            raise FileNotFoundError(f"Archive does not contain {nested.name}")
-        extract_archive(nested, base / "data")
-        if not expected.is_dir():
-            raise FileNotFoundError(f"Archive does not contain {expected}")
+        # All subjects share one archive.
+        with download_lock(base):
+            if expected.is_dir() and not force_update:
+                return base / "data"
+            archive_path = dl.data_dl(URL, CODE, path, force_update, verbose)
+            if base.is_dir():
+                shutil.rmtree(base)
+            base.mkdir(parents=True)
+            extract_archive(archive_path, base / "data")
+            if not expected.is_dir():
+                raise FileNotFoundError(f"Archive does not contain {expected}")
         return base / "data"

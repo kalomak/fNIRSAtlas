@@ -1,7 +1,6 @@
 """Luke2021 fNIRS finger tapping dataset in BIDS format."""
 
 import shutil
-from pathlib import Path
 
 import mne
 import numpy as np
@@ -21,9 +20,12 @@ from .bids_base import (
     get_bids_cache_root,
 )
 from .metadata import FnirsAcquisitionMetadata
-from .utils import extract_archive
+from .utils import download_lock, extract_archive
 
-URL = "https://zenodo.org/api/records/6575155/files-archive"
+URL = (
+    "https://zenodo.org/api/records/6575155/files/"
+    "rob-luke/BIDS-NIRS-Tapping-v0.1.0.zip/content"
+)
 CODE = "Luke2021FnirsTapping"
 TASK = "tapping"
 SUBJECTS = [1, 2, 3, 4, 5]
@@ -32,7 +34,6 @@ SFREQ = 7.8125
 # The endpoint is the last complete sample before 15 s. Onsets are at least
 # 19.072 s apart.
 INTERVAL = [-2, np.floor(15 * SFREQ) / SFREQ]
-INNER_ARCHIVE = Path("rob-luke") / "BIDS-NIRS-Tapping-v0.1.0.zip"
 EXTRACTED_DIR = "rob-luke-BIDS-NIRS-Tapping-e262df8"
 
 
@@ -135,29 +136,16 @@ class Luke2021FnirsTapping(BaseBIDSFNIRSDataset):
         expected = bids_root / next(
             path for path in files if path.endswith("_nirs.snirf")
         )
-        if expected.is_file() and not force_update:
-            return bids_root
-        archive_path = self._download_archive(path, force_update, verbose)
-        if force_update and bids_root.parent.is_dir():
-            shutil.rmtree(bids_root.parent)
-        bids_root.parent.mkdir(parents=True, exist_ok=True)
-        self._extract_archives(archive_path, bids_root.parent)
+        # All subjects share one archive.
+        with download_lock(bids_root):
+            if expected.is_file() and not force_update:
+                return bids_root
+            archive_path = dl.data_dl(URL, CODE, path, force_update, verbose)
+            if bids_root.is_dir():
+                shutil.rmtree(bids_root)
+            extract_archive(archive_path, bids_root.parent)
+            (bids_root.parent / EXTRACTED_DIR).rename(bids_root)
         return bids_root
-
-    # TODO: check if BIDS avail for this dataset without ZIP
-    # TODO: abstract zip downloading
-    @staticmethod
-    def _download_archive(path, force_update, verbose):
-        return Path(dl.data_dl(URL, CODE, path, force_update, verbose))
-
-    @staticmethod
-    def _extract_archives(archive_path, target_dir):
-        extract_archive(archive_path, target_dir)
-        inner_archive = target_dir / INNER_ARCHIVE
-        extract_archive(inner_archive, target_dir)
-        extracted_dir = target_dir / EXTRACTED_DIR
-        if extracted_dir.is_dir() and not (target_dir / "data").exists():
-            extracted_dir.rename(target_dir / "data")
 
     @classmethod
     def _load_annotations(cls, bids_path, meas_date):
