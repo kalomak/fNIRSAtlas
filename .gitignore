@@ -1,19 +1,10 @@
 *.py[cod]
 .venv/
 
-data/
-logs/data/
 logs/
-models/
-processed_data/
-figs/
 results/
-tools/
 config_local.yaml
 config/cluster.env
-AGENTS.local.md
-CLAUDE.local.md
-local/
 *.yml.lock
 .snakemake/
 docs/build/
