@@ -1,0 +1,32 @@
+name: Test
+
+on:
+  push:
+    branches: [main, v2]
+  pull_request:
+    branches: [main, v2]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: py-${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+      # Without the dl and aeon extras, their tests skip.
+      - run: uv sync --locked --extra data --group dev
+      - run: uv run ruff check
+      - run: uv run ruff format --check
+      # Offline tests only, the default pytest selection.
+      - run: uv run pytest
