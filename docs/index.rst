@@ -15,6 +15,7 @@ fnirsatlas
    data_access
    statistical_analysis
    adding_datasets
+   whats_new_v2
 
 .. toctree::
    :maxdepth: 1
