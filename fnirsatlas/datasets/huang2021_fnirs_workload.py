@@ -1,5 +1,6 @@
 """Huang et al. 2021 mental-workload fNIRS dataset."""
 
+import shutil
 from pathlib import Path
 
 import numpy as np
@@ -15,6 +16,7 @@ from moabb.datasets.metadata.schema import (
 
 from .base import BaseFNIRSDataset
 from .metadata import FnirsAcquisitionMetadata
+from .utils import download_lock, extract_archive
 
 CODE = "Huang2021FnirsWorkload"
 SUBJECTS = [
@@ -96,6 +98,8 @@ WAVELENGTHS = (690, 830)
 # Resampling to 5 Hz can place its onset one sample late, which leaves 81.6 s.
 INTERVAL = [0, 81.6]
 DATA_URL = "https://tufts.app.box.com/s/1e0831syu1evlmk9zx2pukpl3i32md6r"
+# Zenodo mirror of the Box whole_data folder, redistributed with the authors' permission.
+URL = "https://zenodo.org/records/23635491/files/whole_data.zip?download=1"
 # Intensity-derived dual-slope estimates. The phase-derived estimates
 # (*_PHI_*) are parallel estimates at the same locations and are not loaded.
 SOURCE_COLUMNS = ["AB_I_O", "AB_I_DO", "CD_I_O", "CD_I_DO"]
@@ -116,7 +120,8 @@ class Huang2021FnirsWorkload(BaseFNIRSDataset):
     estimates, band-pass filtered at 0.001-0.2 Hz. Only the 68 eligible of 87
     recorded subjects are included. The authors excluded 5 for n-back
     performance, 5 for early sensor settings and 9 for abnormal oxygenation
-    dynamics. The data must be downloaded manually.
+    dynamics. The data is downloaded from a Zenodo mirror of the original
+    release.
 
     References
     ----------
@@ -207,6 +212,7 @@ class Huang2021FnirsWorkload(BaseFNIRSDataset):
             "paper": "https://openreview.net/forum?id=QzNHE7QHhut",
             "website": "https://tufts-hci-lab.github.io/code_and_datasets/fNIRS2MW.html",
             "code": "https://github.com/tufts-ml/fNIRS-mental-workload-classifiers",
+            "mirror": "https://doi.org/10.5281/zenodo.23635491",
         },
     )
 
@@ -227,17 +233,28 @@ class Huang2021FnirsWorkload(BaseFNIRSDataset):
     def data_path(
         self, subject, path=None, force_update=False, update_path=None, verbose=None
     ):
-        """Return a manually downloaded subject CSV path."""
-        del force_update, update_path, verbose
+        """Return the subject CSV path, downloading all subjects on first use."""
+        del update_path
         if subject not in self.subject_list:
             raise ValueError(f"Invalid subject number {subject}")
-        data_file = self._data_file(path, subject)
-        if data_file.is_file():
-            return str(data_file)
-        raise FileNotFoundError(
-            f"Download Huang2021 whole_data from {DATA_URL} and place "
-            f"sub_{subject}.csv at {data_file}"
-        )
+        root = self._download_data(path, force_update, verbose)
+        return str(root / f"sub_{subject}.csv")
+
+    @staticmethod
+    def _download_data(path, force_update, verbose):
+        base = Path(dl.get_dataset_path(CODE, path)) / f"MNE-{CODE.lower()}-data"
+        root = base / "whole_data"
+        # All subjects share one archive.
+        with download_lock(base):
+            if root.is_dir() and not force_update:
+                return root
+            archive_path = dl.data_dl(URL, CODE, path, force_update, verbose)
+            if root.is_dir():
+                shutil.rmtree(root)
+            extract_archive(archive_path, base)
+            if not root.is_dir():
+                raise FileNotFoundError(f"Archive does not contain {root.name}")
+        return root
 
     def _get_single_subject_data(self, subject):
         source = np.genfromtxt(
@@ -272,12 +289,3 @@ class Huang2021FnirsWorkload(BaseFNIRSDataset):
             [self._make_stim_raw(raw.n_times, SFREQ, samples, event_labels)]
         )
         return self._populate_fnirs_metadata(raw, default_wavelengths=WAVELENGTHS)
-
-    @staticmethod
-    def _data_file(path, subject):
-        return (
-            Path(dl.get_dataset_path(CODE, path))
-            / f"MNE-{CODE.lower()}-data"
-            / "whole_data"
-            / f"sub_{subject}.csv"
-        )
