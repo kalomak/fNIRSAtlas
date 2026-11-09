@@ -15,8 +15,8 @@ from .fnirs import (
 __all__ = [
     "BaseFNIRS",
     "Emotion",
-    "FingerTapping",
     "FNIRSClassification",
+    "FingerTapping",
     "MentalArithmetic",
     "MotorExecution",
     "MotorImagery",

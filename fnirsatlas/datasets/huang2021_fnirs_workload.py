@@ -257,9 +257,7 @@ class Huang2021FnirsWorkload(BaseFNIRSDataset):
         return root
 
     def _get_single_subject_data(self, subject):
-        source = np.genfromtxt(
-            self.data_path(subject), delimiter=",", names=True, encoding=None
-        )
+        source = np.genfromtxt(self.data_path(subject), delimiter=",", names=True)
         raw = self._convert_subject(source)
         return self._single_run_session(raw)
 

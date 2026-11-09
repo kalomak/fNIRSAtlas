@@ -54,7 +54,7 @@ def test_warn_if_optodes_are_planar_ignores_missing_positions(caplog):
 
 
 def test_standardize_raw_adds_stim_channel_from_annotations():
-    raw = mne.io.RawArray([[0.0] * 10], mne.create_info(["hbo"], 1, "hbo"))
+    raw = mne.io.RawArray(np.zeros((1, 10)), mne.create_info(["hbo"], 1, "hbo"))
     raw.set_annotations(mne.Annotations([2], [0], ["Event"]))
 
     out = standardize_raw(raw, {"Event": 1})
@@ -64,7 +64,7 @@ def test_standardize_raw_adds_stim_channel_from_annotations():
 
 
 def test_standardize_raw_maps_annotations_before_adding_stim_channel():
-    raw = mne.io.RawArray([[0.0] * 10], mne.create_info(["hbo"], 1, "hbo"))
+    raw = mne.io.RawArray(np.zeros((1, 10)), mne.create_info(["hbo"], 1, "hbo"))
     raw.set_annotations(
         mne.Annotations([2, 4, 6], [0, 0, 1], ["1", "Other", "BAD noisy"])
     )
@@ -77,7 +77,7 @@ def test_standardize_raw_maps_annotations_before_adding_stim_channel():
 
 def test_standardize_raw_places_events_on_recordings_with_first_samp():
     raw = mne.io.RawArray(
-        [[0.0] * 100], mne.create_info(["hbo"], 10, "hbo"), first_samp=5
+        np.zeros((1, 100)), mne.create_info(["hbo"], 10, "hbo"), first_samp=5
     )
     raw.set_annotations(mne.Annotations([2.0], [1.5], ["Event"]))
 
@@ -90,7 +90,7 @@ def test_standardize_raw_places_events_on_recordings_with_first_samp():
 
 
 def test_standardize_raw_warns_when_events_share_a_sample(caplog):
-    raw = mne.io.RawArray([[0.0] * 10], mne.create_info(["hbo"], 1, "hbo"))
+    raw = mne.io.RawArray(np.zeros((1, 10)), mne.create_info(["hbo"], 1, "hbo"))
     raw.set_annotations(mne.Annotations([2, 2], [0, 0], ["A", "B"]))
 
     with caplog.at_level(logging.WARNING):
@@ -101,7 +101,7 @@ def test_standardize_raw_warns_when_events_share_a_sample(caplog):
 
 
 def test_standardize_raw_drops_annotations_after_last_sample(caplog):
-    raw = mne.io.RawArray([[0.0] * 10], mne.create_info(["hbo"], 10, "hbo"))
+    raw = mne.io.RawArray(np.zeros((1, 10)), mne.create_info(["hbo"], 10, "hbo"))
     raw.set_annotations(mne.Annotations([0.2, 0.96], [0, 0], ["Event", "Event"]))
 
     with caplog.at_level(logging.WARNING):
@@ -113,7 +113,7 @@ def test_standardize_raw_drops_annotations_after_last_sample(caplog):
 
 
 def test_standardize_raw_keeps_existing_stim_channel():
-    raw = mne.io.RawArray([[0.0] * 10], mne.create_info(["Stim"], 1, "stim"))
+    raw = mne.io.RawArray(np.zeros((1, 10)), mne.create_info(["Stim"], 1, "stim"))
     out = standardize_raw(raw, {"Event": 1})
     assert out is raw
     assert out.ch_names == ["Stim"]

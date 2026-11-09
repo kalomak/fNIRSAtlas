@@ -324,9 +324,17 @@ def standardize_raw(raw, event_id, annotation_rename_map=None):
     return _ensure_stim_channel(raw, event_id)
 
 
+def _optode_pair(name: str) -> tuple[int, int]:
+    """Source and detector numbers of an ``S#_D# ...`` channel name."""
+    match = _OPTODE_PATTERN.match(name)
+    if match is None:
+        raise ValueError(f"Channel name is not 'S#_D# ...': {name}")
+    return int(match[1]), int(match[2])
+
+
 def _max_optodes(raw: mne.io.BaseRaw) -> tuple[int, int]:
     """Largest source and detector numbers in the channel names."""
-    pairs = [tuple(map(int, _OPTODE_PATTERN.match(n).groups())) for n in raw.ch_names]
+    pairs = [_optode_pair(name) for name in raw.ch_names]
     return max(s for s, _ in pairs), max(d for _, d in pairs)
 
 

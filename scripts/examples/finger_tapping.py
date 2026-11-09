@@ -8,7 +8,6 @@ from sklearn.preprocessing import StandardScaler
 from fnirsatlas import FingerTapping
 from fnirsatlas.pipelines import WindowedFeatureExtractor
 
-
 paradigm = FingerTapping()
 datasets = paradigm.datasets
 print([dataset.code for dataset in datasets])

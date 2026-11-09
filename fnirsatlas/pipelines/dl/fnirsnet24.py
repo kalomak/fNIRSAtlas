@@ -37,11 +37,11 @@ class LinearWithConstraint(nn.Linear):
         super().__init__(*args, **kwargs)
         self.max_norm = max_norm
 
-    def forward(self, X):
+    def forward(self, input):
         """Apply the constrained linear projection."""
         with torch.no_grad():
             self.weight.renorm_(p=2, dim=0, maxnorm=self.max_norm)
-        return super().forward(X)
+        return super().forward(input)
 
 
 class SeparableConv2d(nn.Module):

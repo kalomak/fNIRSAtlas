@@ -53,7 +53,7 @@ def test_run_key(source, expected):
     [(1, "block1-4", 40), (5, "block6", 1), (2, "block1", 0)],
 )
 def test_annotation_repairs(subject, run, removed):
-    raw = mne.io.RawArray([[0.0] * 100], mne.create_info(["x"], 1, "misc"))
+    raw = mne.io.RawArray(np.zeros((1, 100)), mne.create_info(["x"], 1, "misc"))
     raw.set_annotations(mne.Annotations(np.arange(50), 1, ["1.0"] * 50))
     Yi2025FnirsMI._repair_annotations(raw, subject, run)
     assert len(raw.annotations) == 50 - removed

@@ -5,7 +5,6 @@ import yaml
 
 from .utils import deep_merge_dicts
 
-
 config = None
 
 
@@ -15,7 +14,7 @@ def _load_yaml(path):
 
 
 def _default_config_path():
-    return files(__package__) / "config" / "config.yaml"
+    return files("fnirsatlas") / "config" / "config.yaml"
 
 
 def load_config():

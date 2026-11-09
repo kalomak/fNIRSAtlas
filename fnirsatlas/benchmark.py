@@ -1,8 +1,8 @@
 """Benchmark fNIRS pipelines with MOABB evaluations."""
 
 import logging
+import runpy
 from collections.abc import Mapping
-from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 
 import pandas as pd
@@ -84,10 +84,7 @@ def load_pipeline_file(path):
     path = Path(path)
     if path.suffix == ".yml":
         return parse_pipelines_from_directory(str(path))
-    spec = spec_from_file_location(path.stem, path)
-    module = module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return [module.PIPELINE]
+    return [runpy.run_path(str(path))["PIPELINE"]]
 
 
 def _load_pipeline_configs(pipelines):

@@ -99,8 +99,9 @@ LICENSE_ERROR = (
 class BaseShin2016Fnirs(BaseFNIRSDataset):
     """Base class for Shin 2016 fNIRS datasets (MA and MI tasks)."""
 
-    _session_indices = None  # Set by subclasses
-    _class_name_map = None  # Set by subclasses
+    # Set by subclasses.
+    _session_indices: tuple[int, ...]
+    _class_name_map: dict[str, int]
 
     def __init__(self, accept=False, **kwargs):
         self.accept = accept
@@ -185,7 +186,7 @@ class BaseShin2016Fnirs(BaseFNIRSDataset):
     def _convert_session(self, session_data, marker_data, montage_data, montage):
         raw = self._make_cw_raw(session_data, montage_data, montage)
         raw.add_channels(
-            [self._make_stim_raw(raw.n_times, session_data.fs, marker_data)]
+            [self._marker_stim_raw(raw.n_times, session_data.fs, marker_data)]
         )
         return self._standardize_raw(raw)
 
@@ -248,7 +249,7 @@ class BaseShin2016Fnirs(BaseFNIRSDataset):
             sensor_pos[detector_name] = detector_pos[detector_name]
         return BaseFNIRSDataset._make_head_montage(sensor_pos, FIDUCIALS)
 
-    def _make_stim_raw(self, n_times, sfreq, marker_data):
+    def _marker_stim_raw(self, n_times, sfreq, marker_data):
         samples = np.rint(
             np.atleast_1d(marker_data.time) * float(sfreq) / 1000.0
         ).astype(int)
@@ -258,7 +259,7 @@ class BaseShin2016Fnirs(BaseFNIRSDataset):
             [self._class_name_map[class_names[idx - 1]] for idx in desc],
             dtype=float,
         )
-        return super()._make_stim_raw(n_times, sfreq, samples, codes)
+        return self._make_stim_raw(n_times, sfreq, samples, codes)
 
 
 class Shin2016FnirsMA(BaseShin2016Fnirs):

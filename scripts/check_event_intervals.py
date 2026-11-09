@@ -1,6 +1,7 @@
 """Summarize intervals between consecutive events in a MOABB dataset."""
 
 import argparse
+from itertools import pairwise
 
 import numpy as np
 import pandas as pd
@@ -25,7 +26,7 @@ def collect_intervals(dataset):
                     )
                     if label in valid_events
                 ]
-                for previous, current in zip(selected, selected[1:], strict=False):
+                for previous, current in pairwise(selected):
                     rows.append(
                         {
                             "subject": subject,

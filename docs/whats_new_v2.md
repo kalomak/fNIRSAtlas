@@ -21,7 +21,8 @@ fNIRSAtlas v2 is a major rewrite that builds on [MOABB](https://moabb.neurotechx
 
     dataset = fnirsatlas.get_dataset("Bnci2014FnirsMA")
     paradigm = fnirsatlas.FNIRSClassification()
-    X, labels, metadata = paradigm.get_data(dataset, subjects=[1])  # v1 groups: metadata.subject
+    # v1 groups: metadata.subject
+    X, labels, metadata = paradigm.get_data(dataset, subjects=[1])
     epochs, labels, metadata = paradigm.get_data(dataset, subjects=[1], return_epochs=True)
     raws = dataset.get_data(subjects=[1])  # continuous, subject/session/run
     ```

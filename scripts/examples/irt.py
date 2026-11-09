@@ -20,9 +20,9 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from py_irt.config import IrtConfig
-from py_irt.dataset import Dataset
-from py_irt.training import IrtModelTrainer
+from py_irt.config import IrtConfig  # ty: ignore[unresolved-import]
+from py_irt.dataset import Dataset  # ty: ignore[unresolved-import]
+from py_irt.training import IrtModelTrainer  # ty: ignore[unresolved-import]
 
 from fnirsatlas.results import load_results
 

@@ -1,9 +1,10 @@
 import logging
 import sys
 from pathlib import Path
+from typing import ClassVar
 
-from .utils import deep_merge_dicts
 from .config import get_config
+from .utils import deep_merge_dicts
 
 
 def setup_logging(config_dict=None):
@@ -54,7 +55,7 @@ def setup_logging(config_dict=None):
 class ColoredFormatter(logging.Formatter):
     """Custom formatter with colors and single letter level names"""
 
-    COLORS = {
+    COLORS: ClassVar[dict[str, str]] = {
         "DEBUG": "\033[36m",  # Cyan
         "INFO": "\033[32m",  # Green
         "WARNING": "\033[33m",  # Yellow

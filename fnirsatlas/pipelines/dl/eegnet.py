@@ -13,11 +13,11 @@ class Conv2dWithConstraint(nn.Conv2d):
         self.max_norm = max_norm
         super().__init__(*args, **kwargs)
 
-    def forward(self, X):
+    def forward(self, input):
         """Apply the constrained convolution."""
         with torch.no_grad():
             self.weight.renorm_(p=2, dim=0, maxnorm=self.max_norm)
-        return super().forward(X)
+        return super().forward(input)
 
 
 class EEGNet(nn.Module):

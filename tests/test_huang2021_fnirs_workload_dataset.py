@@ -110,7 +110,6 @@ def test_raw_preserves_released_epochs(raw):
         Huang2021FnirsWorkload().data_path(1),
         delimiter=",",
         names=True,
-        encoding=None,
     )
     source = np.vstack([source[column] for column in SOURCE_COLUMNS])
     assert raw.info["sfreq"] == 5.2

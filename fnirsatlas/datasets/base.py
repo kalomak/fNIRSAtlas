@@ -86,13 +86,13 @@ class BaseFNIRSDataset(BaseDataset, metaclass=MetaclassFNIRSDataset):
         labels = list(labels)
         if len(samples) != len(labels):
             raise ValueError("samples and labels must have the same length")
-        stim = mne.io.RawArray(
-            data=[[0.0] * n_times],
+        data = np.zeros((1, n_times))
+        data[0, samples] = labels
+        return mne.io.RawArray(
+            data=data,
             info=mne.create_info([channel_name], float(sfreq), ["stim"]),
             verbose=False,
         )
-        stim._data[0, samples] = labels
-        return stim
 
     @staticmethod
     def _load_montage_from_json(path):

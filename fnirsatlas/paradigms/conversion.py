@@ -1,6 +1,7 @@
 """Conversion from MNE epochs to model inputs."""
 
 from copy import deepcopy
+
 import numpy as np
 
 

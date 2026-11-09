@@ -278,7 +278,7 @@ def test_std_check_annotates_segments_of_good_channels_above_the_limit():
         quality_window=5.0,
     )
     raw = _noisy_segment_raw()
-    raw._data[raw.ch_names.index("S1_D1 hbo")] *= 100
+    raw.apply_function(lambda x: x * 100, picks="S1_D1 hbo")
     raw.info["bads"] = ["S1_D1 hbo", "S1_D1 hbr"]
 
     out = pipeline.fit_transform(raw)

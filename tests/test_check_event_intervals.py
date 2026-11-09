@@ -1,11 +1,9 @@
 """Tests for the event interval analysis script."""
 
-from argparse import Namespace
-
 import mne
+import numpy as np
 import pandas as pd
 
-import scripts.check_event_intervals as script
 from scripts.check_event_intervals import (
     collect_intervals,
     count_excluded_trials,
@@ -15,11 +13,12 @@ from scripts.check_event_intervals import (
 
 
 class _Dataset:
-    subject_list = [1]
-    event_id = {"Finger": 1, "Foot": 2}
+    def __init__(self):
+        self.subject_list = [1]
+        self.event_id = {"Finger": 1, "Foot": 2}
 
     def get_data(self, subjects):
-        raw = mne.io.RawArray([[0.0] * 200], mne.create_info(["x"], 1, "misc"))
+        raw = mne.io.RawArray(np.zeros((1, 200)), mne.create_info(["x"], 1, "misc"))
         raw.set_annotations(
             mne.Annotations([0, 10, 30], [1, 1, 1], ["Finger", "Rest", "Foot"])
         )

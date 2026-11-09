@@ -12,7 +12,6 @@ from sklearn.svm import SVC
 from fnirsatlas import FingerTapping
 from fnirsatlas.pipelines import WindowedFeatureExtractor
 
-
 paradigm = FingerTapping()
 evaluation = CrossSubjectEvaluation(paradigm=paradigm, datasets=paradigm.datasets)
 results = evaluation.process(
