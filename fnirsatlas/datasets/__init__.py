@@ -4,12 +4,16 @@ from .bak2019_fnirs_tapping import Bak2019FnirsTapping
 from .base import BaseFNIRSDataset
 from .bids_base import BaseBIDSFNIRSDataset
 from .bnci2014_fnirs_ma import Bnci2014FnirsMA
+from .bonnal2025_fnirs_me import Bonnal2025FnirsME
 from .buccino2016_fnirs_me import Buccino2016FnirsME
+from .carlton2026_fnirs_squeezing import Carlton2026FnirsSqueezing
 from .cockx2023_fnirs_me import Cockx2023FnirsME
 from .gao2023_fnirs_squeezing import Gao2023FnirsSqueezing
 from .guevara2024_fnirs_parkinson import Guevara2024FnirsParkinson
 from .herff2014_fnirs_workload import Herff2014FnirsWorkload
 from .huang2021_fnirs_workload import Huang2021FnirsWorkload
+from .klein2026_fnirs_motion import Klein2026FnirsMotion
+from .liu2020_fnirs import Liu2020FnirsControl, Liu2020FnirsStroke
 from .luke2021_fnirs_speech import Luke2021FnirsSpeech
 from .luke2021_fnirs_tapping import Luke2021FnirsTapping
 from .nemo2024_fnirs import Nemo2024FnirsImagery, Nemo2024FnirsPerception
@@ -26,12 +30,16 @@ from .yucel2025_fnirs_tapping import Yucel2025FnirsTapping
 BENCHMARK_DATASETS = (
     Bak2019FnirsTapping,
     Bnci2014FnirsMA,
+    Bonnal2025FnirsME,
     Buccino2016FnirsME,
+    Carlton2026FnirsSqueezing,
     Cockx2023FnirsME,
     Gao2023FnirsSqueezing,
     Guevara2024FnirsParkinson,
     Herff2014FnirsWorkload,
     Huang2021FnirsWorkload,
+    Liu2020FnirsControl,
+    Liu2020FnirsStroke,
     Luke2021FnirsTapping,
     Luke2021FnirsSpeech,
     Yucel2025FnirsTapping,
@@ -94,12 +102,17 @@ __all__ = [
     "BaseBIDSFNIRSDataset",
     "BaseFNIRSDataset",
     "Bnci2014FnirsMA",
+    "Bonnal2025FnirsME",
     "Buccino2016FnirsME",
+    "Carlton2026FnirsSqueezing",
     "Cockx2023FnirsME",
     "Gao2023FnirsSqueezing",
     "Guevara2024FnirsParkinson",
     "Herff2014FnirsWorkload",
     "Huang2021FnirsWorkload",
+    "Klein2026FnirsMotion",
+    "Liu2020FnirsControl",
+    "Liu2020FnirsStroke",
     "Luke2021FnirsSpeech",
     "Luke2021FnirsTapping",
     "Nemo2024FnirsImagery",
