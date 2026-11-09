@@ -9,7 +9,7 @@
   "name": "FNIRSAtlas",
   "description": "FNIRSAtlas is a large-scale benchmark suite for near-infrared spectroscopy (NIRS) analysis. It provides a unified pipeline that automates everything from data download to preprocessing and analysis. Users can easily test custom models on the included datasets using standardized evaluation protocols, supporting both classical and deep learning methods.",
   "url": "https://github.com/kalomak/fNIRSAtlas",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "https://spdx.org/licenses/MIT.html",
   "creator": {
     "@type": "sc:Person",
@@ -29,151 +29,57 @@
     "deep learning"
   ],
   "distribution": [
-    {"@type": "cr:FileObject", "@id": "bnci-s01", "name": "BNCI S01", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S01.mat", "encodingFormat": "application/x-matlab-data"},
-    {"@type": "cr:FileObject", "@id": "bnci-s02", "name": "BNCI S02", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S02.mat", "encodingFormat": "application/x-matlab-data"},
-    {"@type": "cr:FileObject", "@id": "bnci-s03", "name": "BNCI S03", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S03.mat", "encodingFormat": "application/x-matlab-data"},
-    {"@type": "cr:FileObject", "@id": "bnci-s04", "name": "BNCI S04", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S04.mat", "encodingFormat": "application/x-matlab-data"},
-    {"@type": "cr:FileObject", "@id": "bnci-s05", "name": "BNCI S05", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S05.mat", "encodingFormat": "application/x-matlab-data"},
-    {"@type": "cr:FileObject", "@id": "bnci-s06", "name": "BNCI S06", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S06.mat", "encodingFormat": "application/x-matlab-data"},
-    {"@type": "cr:FileObject", "@id": "bnci-s07", "name": "BNCI S07", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S07.mat", "encodingFormat": "application/x-matlab-data"},
-    {"@type": "cr:FileObject", "@id": "bnci-s08", "name": "BNCI S08", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S08.mat", "encodingFormat": "application/x-matlab-data"},
-    {
-      "@type": "cr:FileObject",
-      "@id": "shin2019",
-      "name": "Shin2019",
-      "description": "Shin et al. 2019 fNIRS mental arithmetic / motor imagery dataset",
-      "contentUrl": "https://ndownloader.figshare.com/files/16753760",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "shin2018b",
-      "name": "Shin2018b",
-      "description": "Shin et al. 2018b fNIRS dataset",
-      "contentUrl": "https://ndownloader.figshare.com/files/10515928",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "shin2016",
-      "name": "Shin2016",
-      "description": "Shin et al. 2016 hybrid BCI dataset (request access)",
-      "contentUrl": "https://doc.ml.tu-berlin.de/hBCI/NIRS/NIRS_01-29.zip",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "bak2019",
-      "name": "Bak2019",
-      "description": "Bak et al. 2019 finger/foot tapping fNIRS dataset",
-      "contentUrl": "https://ndownloader.figshare.com/files/18069143",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "cockx2023",
-      "name": "Cockx2023",
-      "description": "Cockx et al. 2023 finger/foot tapping fNIRS dataset (656 MB)",
-      "contentUrl": "https://data.ru.nl/api/collectionfiles/di/id/di_231884707/files/download",
-      "encodingFormat": "application/x-tar"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "ortega2020",
-      "name": "Ortega2020",
-      "description": "Ortega et al. 2020 hand grip fNIRS dataset",
-      "contentUrl": "https://ndownloader.figshare.com/files/22837760",
-      "encodingFormat": "application/x-hdf5"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "luke2021",
-      "name": "Luke2021",
-      "description": "Luke et al. 2021 finger tapping BIDS-NIRS dataset (43.8 MB)",
-      "contentUrl": "https://zenodo.org/api/records/6575155/files/rob-luke/BIDS-NIRS-Tapping-v0.1.0.zip/content",
-      "encodingFormat": "application/zip"
-    },
-    {"@type": "cr:FileObject", "@id": "buccino2016-2601537", "name": "Buccino2016 2601537", "contentUrl": "https://ndownloader.figshare.com/files/2601537", "encodingFormat": "application/zip"},
-    {"@type": "cr:FileObject", "@id": "buccino2016-2601481", "name": "Buccino2016 2601481", "contentUrl": "https://ndownloader.figshare.com/files/2601481", "encodingFormat": "application/zip"},
-    {
-      "@type": "cr:FileObject",
-      "@id": "guevara2024",
-      "name": "Guevara2024",
-      "description": "Guevara et al. 2024 finger tapping Parkinson fNIRS dataset (284 MB)",
-      "contentUrl": "https://zenodo.org/api/records/7966830/files/fNIRS_Parkinson.zip/content",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "luke2024b",
-      "name": "Luke2024b",
-      "description": "Luke et al. 2024b FRESH-Motor finger tapping dataset",
-      "contentUrl": "https://osf.io/download/juxy8/",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "gao2024",
-      "name": "Gao2024",
-      "description": "Gao et al. 2024 fNIRS dataset (OpenNeuro ds007420)",
-      "contentUrl": "https://github.com/OpenNeuroDatasets/ds007420.git",
-      "encodingFormat": "application/x-git"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "shin2018",
-      "name": "Shin2018",
-      "description": "Shin et al. 2018 simultaneous EEG/NIRS N-back dataset",
-      "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/NIRS_01-26_MATLAB.zip",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "huang2021",
-      "name": "Huang2021",
-      "description": "Huang et al. 2021 N-back fNIRS dataset (manual download required)",
-      "contentUrl": "https://zenodo.org/records/23635491/files/whole_data.zip?download=1",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "herff2014",
-      "name": "Herff2014",
-      "description": "Herff et al. 2014 fNIRS N-back dataset (request access)",
-      "contentUrl": "https://www.csl.uni-bremen.de/CorpusData/download.php?crps=fNIRS",
-      "encodingFormat": "text/html"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "yi2025",
-      "name": "Yi2025",
-      "description": "Yi et al. 2025 FineMI motor imagery fNIRS dataset",
-      "contentUrl": "https://ndownloader.figshare.com/files/42320127",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "nemo",
-      "name": "NEMO",
-      "description": "NEMO emotion recognition fNIRS dataset",
-      "contentUrl": "https://osf.io/download/pfst8/",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "shader2021",
-      "name": "Shader2021",
-      "description": "Shader et al. 2021 audio/video/control fNIRS dataset",
-      "contentUrl": "https://osf.io/download/xwerv/",
-      "encodingFormat": "application/zip"
-    },
-    {
-      "@type": "cr:FileObject",
-      "@id": "luke2024a",
-      "name": "Luke2024a",
-      "description": "Luke et al. 2024a FRESH-Audio dataset",
-      "contentUrl": "https://osf.io/download/xd2qm/",
-      "encodingFormat": "application/zip"
-    }
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s01", "name": "Bnci2014FnirsMA S01", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S01.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s02", "name": "Bnci2014FnirsMA S02", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S02.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s03", "name": "Bnci2014FnirsMA S03", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S03.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s04", "name": "Bnci2014FnirsMA S04", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S04.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s05", "name": "Bnci2014FnirsMA S05", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S05.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s06", "name": "Bnci2014FnirsMA S06", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S06.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s07", "name": "Bnci2014FnirsMA S07", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S07.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "bnci2014fnirsma-s08", "name": "Bnci2014FnirsMA S08", "contentUrl": "https://bnci-horizon-2020.eu/database/data-sets/003-2014/S08.mat", "encodingFormat": "application/x-matlab-data"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirsternary", "name": "Shin2018FnirsTernary", "description": "Shin et al. 2018 ternary mental arithmetic / motor imagery / rest fNIRS dataset", "contentUrl": "https://ndownloader.figshare.com/files/16753760", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018bfnirsma", "name": "Shin2018bFnirsMA", "description": "Shin et al. 2018b fNIRS dataset", "contentUrl": "https://ndownloader.figshare.com/files/10515928", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2016fnirs", "name": "Shin2016Fnirs", "description": "Shin et al. 2016 hybrid BCI dataset (Shin2016FnirsMA, Shin2016FnirsMI)", "contentUrl": "https://doc.ml.tu-berlin.de/hBCI/NIRS/NIRS_01-29.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "bak2019fnirstapping", "name": "Bak2019FnirsTapping", "description": "Bak et al. 2019 finger/foot tapping fNIRS dataset", "contentUrl": "https://ndownloader.figshare.com/files/18069143", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "cockx2023fnirsme", "name": "Cockx2023FnirsME", "description": "Cockx et al. 2023 finger/foot tapping fNIRS dataset (656 MB)", "contentUrl": "https://data.ru.nl/api/collectionfiles/di/id/di_231884707/files/download", "encodingFormat": "application/x-tar"},
+    {"@type": "cr:FileObject", "@id": "ortega2020fnirsgrip", "name": "Ortega2020FnirsGrip", "description": "Ortega et al. 2020 hand grip fNIRS dataset", "contentUrl": "https://ndownloader.figshare.com/files/22837760", "encodingFormat": "application/x-hdf5"},
+    {"@type": "cr:FileObject", "@id": "luke2021fnirstapping", "name": "Luke2021FnirsTapping", "description": "Luke et al. 2021 finger tapping BIDS-NIRS dataset (43.8 MB)", "contentUrl": "https://zenodo.org/api/records/6575155/files/rob-luke/BIDS-NIRS-Tapping-v0.1.0.zip/content", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "buccino2016fnirsme-2601537", "name": "Buccino2016FnirsME 2601537", "contentUrl": "https://ndownloader.figshare.com/files/2601537", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "buccino2016fnirsme-2601481", "name": "Buccino2016FnirsME 2601481", "contentUrl": "https://ndownloader.figshare.com/files/2601481", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "guevara2024fnirsparkinson", "name": "Guevara2024FnirsParkinson", "description": "Guevara et al. 2024 finger tapping Parkinson fNIRS dataset (284 MB)", "contentUrl": "https://zenodo.org/api/records/7966830/files/fNIRS_Parkinson.zip/content", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "yucel2025fnirstapping", "name": "Yucel2025FnirsTapping", "description": "Yücel et al. 2025 FRESH-Motor finger tapping dataset", "contentUrl": "https://osf.io/download/juxy8/", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "gao2023fnirssqueezing", "name": "Gao2023FnirsSqueezing", "description": "Gao et al. 2023 ball squeezing fNIRS dataset (OpenNeuro ds007420)", "contentUrl": "https://github.com/OpenNeuroDatasets/ds007420.git", "encodingFormat": "application/x-git"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp001", "name": "Shin2018Fnirs VP001", "description": "Shin et al. 2018 simultaneous EEG/NIRS N-back and word generation dataset", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP001.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp002", "name": "Shin2018Fnirs VP002", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP002.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp003", "name": "Shin2018Fnirs VP003", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP003.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp004", "name": "Shin2018Fnirs VP004", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP004.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp005", "name": "Shin2018Fnirs VP005", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP005.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp006", "name": "Shin2018Fnirs VP006", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP006.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp007", "name": "Shin2018Fnirs VP007", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP007.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp008", "name": "Shin2018Fnirs VP008", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP008.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp009", "name": "Shin2018Fnirs VP009", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP009.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp010", "name": "Shin2018Fnirs VP010", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP010.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp011", "name": "Shin2018Fnirs VP011", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP011.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp012", "name": "Shin2018Fnirs VP012", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP012.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp013", "name": "Shin2018Fnirs VP013", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP013.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp014", "name": "Shin2018Fnirs VP014", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP014.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp015", "name": "Shin2018Fnirs VP015", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP015.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp016", "name": "Shin2018Fnirs VP016", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP016.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp017", "name": "Shin2018Fnirs VP017", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP017.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp018", "name": "Shin2018Fnirs VP018", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP018.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp019", "name": "Shin2018Fnirs VP019", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP019.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp020", "name": "Shin2018Fnirs VP020", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP020.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp021", "name": "Shin2018Fnirs VP021", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP021.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp022", "name": "Shin2018Fnirs VP022", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP022.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp023", "name": "Shin2018Fnirs VP023", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP023.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp024", "name": "Shin2018Fnirs VP024", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP024.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp025", "name": "Shin2018Fnirs VP025", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP025.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shin2018fnirs-vp026", "name": "Shin2018Fnirs VP026", "contentUrl": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/NIRS/VP026.zip", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "huang2021fnirsworkload", "name": "Huang2021FnirsWorkload", "description": "Huang et al. 2021 N-back fNIRS dataset (Zenodo mirror)", "contentUrl": "https://zenodo.org/records/23635491/files/whole_data.zip?download=1", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "herff2014fnirsworkload", "name": "Herff2014FnirsWorkload", "description": "Herff et al. 2014 fNIRS N-back dataset (request access)", "contentUrl": "https://www.csl.uni-bremen.de/CorpusData/download.php?crps=fNIRS", "encodingFormat": "text/html"},
+    {"@type": "cr:FileObject", "@id": "yi2025fnirsmi", "name": "Yi2025FnirsMI", "description": "Yi et al. 2025 FineMI motor imagery fNIRS dataset", "contentUrl": "https://ndownloader.figshare.com/files/42320127", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "nemo2024fnirs", "name": "Nemo2024Fnirs", "description": "NEMO emotion recognition fNIRS dataset (Nemo2024FnirsPerception, Nemo2024FnirsImagery)", "contentUrl": "https://osf.io/download/pfst8/", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "shader2021fnirsspeech", "name": "Shader2021FnirsSpeech", "description": "Shader et al. 2021 audio/video/control fNIRS dataset", "contentUrl": "https://osf.io/download/xwerv/", "encodingFormat": "application/zip"},
+    {"@type": "cr:FileObject", "@id": "luke2021fnirsspeech", "name": "Luke2021FnirsSpeech", "description": "Luke et al. 2021 FRESH-Audio dataset", "contentUrl": "https://osf.io/download/xd2qm/", "encodingFormat": "application/zip"}
   ]
 }
