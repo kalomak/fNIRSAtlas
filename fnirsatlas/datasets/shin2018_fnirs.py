@@ -81,7 +81,7 @@ DOCUMENTATION = DocumentationMetadata(
     publication_year=2018,
 )
 EXTERNAL_LINKS = {
-    "website": "http://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/",
+    "website": "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/",
     "code": "https://github.com/JaeyoungShin/simultaneous_EEG-NIRS",
 }
 

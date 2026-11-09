@@ -18,7 +18,7 @@ from fnirsatlas.datasets.base import BaseFNIRSDataset
 from fnirsatlas.datasets.metadata import FnirsAcquisitionMetadata
 from fnirsatlas.datasets.utils import download_lock, extract_archive
 
-URL = "http://doc.ml.tu-berlin.de/hBCI/NIRS/NIRS_01-29.zip"
+URL = "https://doc.ml.tu-berlin.de/hBCI/NIRS/NIRS_01-29.zip"
 DOWNLOAD_CODE = "BBCIFNIRS"
 SUBJECTS = list(range(1, 30))
 # Onsets are at least 27.44 s apart.
@@ -85,7 +85,7 @@ DOCUMENTATION = DocumentationMetadata(
     institution="Technische Universität Berlin",
     country="DE",
     repository="TU Berlin Machine Learning Group",
-    data_url="http://doc.ml.tu-berlin.de/hBCI/",
+    data_url="https://doc.ml.tu-berlin.de/hBCI/",
     # The download page links gnu.org/licenses/gpl.txt without naming a version.
     license="GPL-3.0",
     publication_year=2017,
