@@ -1,13 +1,13 @@
 ---
-name: Dataset or task correction
+name: Dataset correction
 about: Report an error in how a dataset is loaded, labelled, epoched, or documented.
 title: "[Correction] <dataset>: <short description>"
 labels: correction
 ---
 
-**Dataset** (e.g. luke2021 or shin2016__ma):
+**Dataset** (e.g. Luke2021FnirsTapping or Shin2016FnirsMA):
 
-**Area** (events/labels, task definition, epoch interval, channels/montage/units, subjects/sessions, documentation, other):
+**Area** (events/labels, epoch interval, channels/montage/units, subjects/sessions, documentation, other):
 
 **Current behaviour**:
 

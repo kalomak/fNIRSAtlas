@@ -9,15 +9,13 @@ To add the dataset yourself, follow [Adding a dataset](https://github.com/kaloma
 
 **Paper** (title or DOI):
 
-**Data URL**:
+**Data URL** (must be public):
 
 **License** (e.g. CC-BY-4.0):
 
-**Access** (direct download, or on request):
+**Task and conditions** (e.g. left vs right finger tapping):
 
-**Tasks and conditions** (e.g. left vs right finger tapping):
-
-**Subjects and trials per condition**:
+**Subjects and trials per condition** (if any):
 
 **Device** (e.g. NIRx NIRScout):
 

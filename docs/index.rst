@@ -10,7 +10,7 @@ fnirsatlas
    pipelines
    paradigms
    benchmark
-   workflow
+   large_scale_runs
    preprocessing
    data_access
    statistical_analysis

@@ -2,11 +2,11 @@
 
 [![PyPI](https://img.shields.io/pypi/v/fnirsatlas)](https://pypi.org/project/fnirsatlas/)
 
-fNIRSAtlas is the largest collection of public fNIRS datasets and a benchmark for fNIRS classification.
+fNIRSAtlas is a Python package for parsing, preprocessing, and classifying fNIRS datasets with a unified, extensible structure. It provides the largest fNIRS benchmark, covering motor, mental arithmetic, motor imagery, emotion, and other tasks, and a fully automatic pipeline from raw data to classification.
 
 ## Features
 
-- 20+ public fNIRS datasets through the MOABB dataset API
+- 20+ public fNIRS datasets
 - Mental arithmetic, motor, n-back, and emotion classification paradigms
 - Within-session, cross-session, and cross-subject evaluation
 - YAML and Python pipelines for scikit-learn, PyTorch, and Braindecode
@@ -72,10 +72,9 @@ See the [documentation](docs/).
 
 See [Contributing](CONTRIBUTING.md) for the development setup, tests, and checks. In short:
 
-- [Open an issue](https://github.com/kalomak/fNIRSAtlas/issues/new/choose) to report a bug, request a feature or dataset, or report a dataset or task correction.
+- [Open an issue](https://github.com/kalomak/fNIRSAtlas/issues/new/choose) to report a bug, suggest an improvement, request a feature or dataset, report a dataset correction, or ask a question.
 - [Open a pull request](https://github.com/kalomak/fNIRSAtlas/pulls) for a fix or feature.
 - [Add a dataset](docs/adding_datasets.md) through a pull request.
-- Contact the author with any questions.
 
 ## Citation
 

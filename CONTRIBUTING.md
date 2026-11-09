@@ -1,13 +1,13 @@
 # Contributing
 
-Contributions of datasets, tasks, models, fixes, documentation, or other improvements are welcome.
+Contributions of datasets, models, fixes, documentation, or other improvements are welcome.
 
 ## Issues
 
 Open an [issue](https://github.com/kalomak/fNIRSAtlas/issues/new/choose) before larger changes:
 
 - **Dataset request**: a public fNIRS dataset to add.
-- **Dataset or task correction**: an error in how a dataset is loaded, labelled, epoched, or documented.
+- **Dataset correction**: an error in how a dataset is loaded, labelled, epoched, or documented.
 - **Blank issue**: bugs, feature requests, and questions.
 
 ## Pull requests

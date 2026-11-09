@@ -90,6 +90,8 @@ This script exposes the same common selections for shell workflows:
 uv run python scripts/run_fnirs_benchmark.py --help
 ```
 
+For runs over many pipelines, datasets, and seeds, see [Large-scale runs](large_scale_runs.md).
+
 ## Learning curves
 
 Score against the number of training trials per class, with MOABB's
