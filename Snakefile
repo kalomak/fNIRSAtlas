@@ -1,99 +1,141 @@
-import os
+"""Benchmark workflow: one job per paradigm, evaluation, dataset, pipeline and seed."""
+
 from pathlib import Path
-from fnirsatlas.config import get_results_cache_dir
-from fnirsatlas.utils import get_processed_data_path, get_raw_data_path
 
-configfile: "fnirsatlas/configs/quick_run_snakemake.yaml"
+from fnirsatlas.benchmark import (
+    PARADIGMS,
+    load_pipeline_file,
+    results_dir,
+    select_datasets,
+)
+from fnirsatlas.results import result_path
 
-DATASETS = [dataset.lower() for dataset in config["datasets"]]
-MODELS = config["models"]
-SEEDS = config["seeds"]
-# Classification setting -> search strategy.
-SETTINGS = config["settings"]
-N_JOBS = int(config.get("n_jobs", 1))
-LOG_LEVEL = config.get("log_level", "INFO")
+
+configfile: "config/benchmark.yaml"
+
+
+PIPELINES = {Path(path).stem: path for path in config["pipelines"]}
+EVALUATIONS = config["evaluations"]
+SEEDS = [str(seed) for seed in config["seeds"]]
+RESULTS = Path(config["results"] or results_dir())
+OUTPUT = Path(config["output"] or RESULTS / "benchmark")
+THREADS = int(config["threads_per_job"])
+# Declared pipeline parameters are fitted directly instead of searched.
+NO_GRID = "--no-grid" if config.get("no_grid") else ""
 LOG_DIR = Path("logs/snakemake")
-RAW_OUTPUTS = {
-    dataset: str(get_raw_data_path(dataset)) for dataset in DATASETS
-}
-RAW_ROOT = Path(
-    os.path.commonpath([str(Path(raw_output).parent) for raw_output in RAW_OUTPUTS.values()])
+
+CELL = str(
+    result_path("{paradigm}", "{evaluation}", "{dataset}", "{pipeline}", "{seed}", RESULTS)
 )
-DATASET_SUBPATHS = {
-    dataset: Path(get_raw_data_path(dataset)).relative_to(RAW_ROOT).as_posix()
-    for dataset in DATASETS
+STAMP = str(RESULTS / "snakemake/{paradigm}/{dataset}.done")
+
+
+def _pipeline_paradigms(pipeline, path):
+    """Paradigms a pipeline definition declares, limited to the configured selection."""
+    declared = {name for cfg in load_pipeline_file(path) for name in cfg["paradigms"]}
+    selected = config.get("paradigms")
+    if selected is None:
+        return sorted(declared)
+    supported = sorted(declared & set(selected))
+    if not supported:
+        raise ValueError(f"{pipeline} supports none of the selected paradigms")
+    return supported
+
+
+def _paradigm_datasets(paradigm):
+    """Dataset codes of one paradigm, limited to the configured selection."""
+    selected = select_datasets(PARADIGMS[paradigm](), config.get("datasets"))
+    return [dataset.code for dataset in selected]
+
+
+PIPELINE_PARADIGMS = {
+    pipeline: _pipeline_paradigms(pipeline, path) for pipeline, path in PIPELINES.items()
 }
-SUBPATH_TO_DATASET = {subpath: dataset for dataset, subpath in DATASET_SUBPATHS.items()}
-PROCESSED_DIR = Path(get_processed_data_path(DATASETS[0])).parent
-RESULT_PATTERN = str(
-    get_results_cache_dir() / "{setting}" / "{search_strategy}" / "{model}" / "{dataset}" / "{seed}" / "results.json"
-)
+PARADIGM_DATASETS = {
+    paradigm: _paradigm_datasets(paradigm)
+    for paradigms in PIPELINE_PARADIGMS.values()
+    for paradigm in paradigms
+}
+if unknown := set(config.get("datasets") or ()) - {
+    code for codes in PARADIGM_DATASETS.values() for code in codes
+}:
+    raise ValueError(f"Datasets in no selected paradigm: {sorted(unknown)}")
+
+CELL_FILES = [
+    CELL.format(
+        paradigm=paradigm,
+        evaluation=evaluation,
+        dataset=dataset,
+        pipeline=pipeline,
+        seed=seed,
+    )
+    for pipeline, paradigms in PIPELINE_PARADIGMS.items()
+    for paradigm in paradigms
+    for dataset in PARADIGM_DATASETS[paradigm]
+    for evaluation in EVALUATIONS
+    for seed in SEEDS
+]
+if not CELL_FILES:
+    raise ValueError("No evaluation cells selected")
+
+
+wildcard_constraints:
+    paradigm="|".join(PARADIGM_DATASETS),
+    evaluation="|".join(EVALUATIONS),
+    dataset="|".join({code for codes in PARADIGM_DATASETS.values() for code in codes}),
+    pipeline="|".join(PIPELINES),
+    seed=r"\d+",
 
 
 rule all:
     input:
-        expand(".snakemake/display/{setting}.txt", setting=SETTINGS)
+        CELL_FILES,
 
 
-rule download_dataset:
+# Fill the MOABB epoch cache once per dataset and workflow run so parallel cells
+# do not race on it. The stamp is temporary, so each run re-checks the cache.
+rule warm_cache:
     output:
-        raw_dataset=directory(str(RAW_ROOT / "{dataset_subpath}"))
-    wildcard_constraints:
-        dataset_subpath=".+"
-    params:
-        dataset=lambda wildcards: SUBPATH_TO_DATASET[wildcards.dataset_subpath],
-        log_level=LOG_LEVEL
+        temp(touch(STAMP)),
+    threads: THREADS
     log:
-        str(LOG_DIR / "download__{dataset_subpath}.log")
+        str(LOG_DIR / "warm__{paradigm}__{dataset}.log"),
     shell:
-        "FNIRSATLAS_LOG_LEVEL={params.log_level} uv run python scripts/download_dataset.py -d {params.dataset} > {log} 2>&1"
+        """
+        python scripts/warm_cache.py \
+            --paradigm {wildcards.paradigm} \
+            --dataset {wildcards.dataset} > {log} 2>&1
+        """
 
 
-rule process_dataset:
+rule run_cell:
     input:
-        raw_dataset=lambda wildcards: str(get_raw_data_path(wildcards.dataset))
+        STAMP,
     output:
-        processed_dataset=str(PROCESSED_DIR / "{dataset}_processed.npz")
+        CELL,
     params:
-        log_level=LOG_LEVEL
+        pipeline=lambda wildcards: PIPELINES[wildcards.pipeline],
+        output=lambda wildcards: str(
+            OUTPUT
+            / wildcards.paradigm
+            / wildcards.evaluation
+            / wildcards.dataset
+            / wildcards.pipeline
+            / f"seed-{wildcards.seed}"
+        ),
+    threads: THREADS
     log:
-        str(LOG_DIR / "process__{dataset}.log")
+        str(LOG_DIR / "cell__{paradigm}__{evaluation}__{dataset}__{pipeline}__{seed}.log"),
     shell:
-        "FNIRSATLAS_LOG_LEVEL={params.log_level} uv run python scripts/process_dataset.py -d {wildcards.dataset} --override > {log} 2>&1"
-
-
-rule classify_dataset:
-    input:
-        processed_dataset=lambda wildcards: str(get_processed_data_path(wildcards.dataset))
-    output:
-        RESULT_PATTERN
-    params:
-        log_level=LOG_LEVEL,
-        n_jobs=N_JOBS
-    log:
-        str(LOG_DIR / "classify__{setting}__{search_strategy}__{model}__{dataset}__{seed}.log")
-    shell:
-        "FNIRSATLAS_LOG_LEVEL={params.log_level} uv run python scripts/classify_dataset.py -d {wildcards.dataset} --model {wildcards.model} --seed {wildcards.seed} --n_jobs {params.n_jobs} --no_table --classification_setting {wildcards.setting} --search-strategy {wildcards.search_strategy} --override > {log} 2>&1"
-
-
-rule display_results:
-    input:
-        result_json=lambda wildcards: expand(
-            RESULT_PATTERN,
-            setting=wildcards.setting,
-            search_strategy=SETTINGS[wildcards.setting],
-            model=MODELS,
-            dataset=DATASETS,
-            seed=SEEDS,
-        )
-    output:
-        ".snakemake/display/{setting}.txt"
-    log:
-        str(LOG_DIR / "display__{setting}.log")
-    params:
-        datasets=" ".join(DATASETS),
-        models=" ".join(MODELS),
-        seeds=" ".join(str(seed) for seed in SEEDS),
-        search_strategy=lambda wildcards: SETTINGS[wildcards.setting]
-    shell:
-        "FNIRSATLAS_LOG_LEVEL=WARNING uv run python scripts/display_results.py -d {params.datasets} -m {params.models} --seeds {params.seeds} -c {wildcards.setting} --metric {wildcards.setting}_acc --search-strategy {params.search_strategy} > {output} 2> {log}"
+        """
+        python scripts/run_fnirs_benchmark.py \
+            --paradigms {wildcards.paradigm} \
+            --evaluations {wildcards.evaluation} \
+            --datasets {wildcards.dataset} \
+            --pipelines {params.pipeline} \
+            --seed {wildcards.seed} \
+            --suffix {wildcards.dataset}_{wildcards.pipeline} \
+            --results {RESULTS} \
+            --output {params.output} \
+            --n-jobs {threads} {NO_GRID} > {log} 2>&1
+        """

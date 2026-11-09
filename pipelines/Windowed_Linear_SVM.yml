@@ -1,0 +1,15 @@
+name: Windowed + SVM-Linear
+paradigms:
+  - FNIRSClassification
+pipeline:
+  - name: WindowedFeatureExtractor
+    from: fnirsatlas.pipelines
+    parameters:
+      n_windows: 6
+  - name: StandardScaler
+    from: sklearn.preprocessing
+  - name: SVC
+    from: sklearn.svm
+    parameters:
+      kernel: linear
+      C: 0.1

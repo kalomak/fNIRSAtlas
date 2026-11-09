@@ -1,0 +1,19 @@
+name: Windowed + PCA + LDA
+paradigms:
+  - FNIRSClassification
+pipeline:
+  - name: WindowedFeatureExtractor
+    from: fnirsatlas.pipelines
+    parameters:
+      n_windows: 6
+  - name: StandardScaler
+    from: sklearn.preprocessing
+  - name: PCA
+    from: sklearn.decomposition
+    parameters:
+      n_components: 0.99
+  - name: LinearDiscriminantAnalysis
+    from: sklearn.discriminant_analysis
+    parameters:
+      solver: lsqr
+      shrinkage: auto

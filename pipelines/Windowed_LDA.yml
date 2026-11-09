@@ -1,0 +1,24 @@
+name: Windowed + LDA
+paradigms:
+  - FNIRSClassification
+pipeline:
+  - name: WindowedFeatureExtractor
+    from: fnirsatlas.pipelines
+    parameters:
+      n_windows: 5
+      features:
+        - mean
+  - name: StandardScalerND
+    from: fnirsatlas.pipelines
+  - name: LinearDiscriminantAnalysis
+    from: sklearn.discriminant_analysis
+    parameters:
+      solver: lsqr
+      shrinkage: auto
+param_grid:
+  windowedfeatureextractor__n_windows: [1, 3, 5, 15]
+  windowedfeatureextractor__features:
+    - ["mean"]
+    - ["slope"]
+    - ["std"]
+    - ["mean", "slope"]

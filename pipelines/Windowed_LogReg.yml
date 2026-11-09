@@ -1,0 +1,14 @@
+name: Windowed + LogReg
+paradigms:
+  - FNIRSClassification
+pipeline:
+  - name: WindowedFeatureExtractor
+    from: fnirsatlas.pipelines
+    parameters:
+      n_windows: 5
+      features:
+        - mean
+  - name: StandardScalerND
+    from: fnirsatlas.pipelines
+  - name: LogisticRegression
+    from: sklearn.linear_model

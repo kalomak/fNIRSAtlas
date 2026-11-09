@@ -1,0 +1,24 @@
+name: Windowed + ANN
+paradigms:
+  - FNIRSClassification
+pipeline:
+  - name: WindowedFeatureExtractor
+    from: fnirsatlas.pipelines
+    parameters:
+      n_windows: 1
+      features:
+        - mean
+        - slope
+  - name: StandardScaler
+    from: sklearn.preprocessing
+  - name: MLPClassifier
+    from: sklearn.neural_network
+    parameters:
+      hidden_layer_sizes:
+        - 20
+      max_iter: 1000
+param_grid:
+  windowedfeatureextractor__n_windows: [1, 50]
+  mlpclassifier__activation: ["relu", "tanh"]
+  mlpclassifier__hidden_layer_sizes: [[20], [256]]
+  mlpclassifier__learning_rate_init: [0.001, 0.01]

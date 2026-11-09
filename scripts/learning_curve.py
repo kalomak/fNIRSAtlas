@@ -1,100 +1,125 @@
-#!/usr/bin/env python3
-"""Run subject-count learning curves."""
+"""Run and plot learning curves with MOABB's ``LearningCurveSplitter``.
+
+Each split trains on a fixed number of trials per class and tests on a held-out
+share of the data. Results are saved by MOABB with the ``data_size`` and
+``permutation`` of each split.
+"""
 
 import argparse
-import json
-from functools import partial
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
-import yaml
-from sklearn.metrics import accuracy_score, balanced_accuracy_score, cohen_kappa_score
-from sklearn.model_selection import GroupKFold
+from moabb.datasets.base import CacheConfig
+from moabb.evaluations.splitters import LearningCurveSplitter
 
-from fnirsatlas.classification import get_baseline_model
-from fnirsatlas.config import (
-    get_results_cache_dir,
-    get_paper_models,
-    get_processed_datasets_dir,
+from fnirsatlas.benchmark import (
+    DEFAULT_PIPELINES,
+    EVALUATIONS,
+    PARADIGMS,
+    _seed_configs,
+    _seed_suffix,
+    load_pipeline_file,
+    results_dir,
+    select_datasets,
 )
-from fnirsatlas.io.dataset import fNIRSAtlasDataset
-from fnirsatlas.utils import CONFIG_DIR, dict_to_json
+from fnirsatlas.results import subject_mean
 
 
-MODELS = get_paper_models()
-PARAMS_PATH = CONFIG_DIR / "best_params_cross.yaml"
-METRICS = {
-    "accuracy": accuracy_score,
-    "kappa": cohen_kappa_score,
-    "balanced_accuracy_adjusted": partial(balanced_accuracy_score, adjusted=True),
-}
-
-
-def run(dataset, model, seed, fold, sizes, n_folds, device, root):
-    """Run all training sizes for one dataset, seed, and outer fold."""
-    if not 0 <= fold < n_folds:
-        raise ValueError(f"fold must be in [0, {n_folds - 1}]")
-    size_key = "-".join(map(str, sizes))
-    name = f"seed-{seed}-fold-{fold}-sizes-{size_key}-cv-{n_folds}.json"
-    path = root / dataset / model / name
-    if path.exists():
-        return
-
-    data = fNIRSAtlasDataset(get_processed_datasets_dir() / f"{dataset}_processed.npz")
-    data.set_task()
-    X, y, groups = data.as_tuple()[:3]
-    splits = GroupKFold(n_splits=n_folds, shuffle=True, random_state=seed)
-    train, test = list(splits.split(X, y, groups))[fold]
-    subjects = np.unique(groups[train])
-    rng = np.random.default_rng(np.random.SeedSequence([seed, fold]))
-    subjects = subjects[rng.permutation(len(subjects))]
-    largest = max(sizes)
-    if len(subjects) < largest:
-        raise ValueError(f"{dataset} has only {len(subjects)} training subjects")
-
-    params = yaml.safe_load(PARAMS_PATH.read_text())["params"][model]
-    rows = []
-    for size in sizes:
-        if largest % size:
-            raise ValueError(f"training size {size} does not divide {largest}")
-        for subset, selected in enumerate(np.split(subjects[:largest], largest // size)):
-            fit = train[np.isin(groups[train], selected)]
-            clf = get_baseline_model(
-                model_name=model, random_state=seed, classification_setting="cross",
-                X=X[fit], y=y[fit], info=data.info, device=device,
-            )
-            clf.set_params(**params)
-            clf.fit(X[fit], y[fit])
-            y_pred = clf.predict(X[test])
-            rows.append({
-                "dataset": dataset, "model": model, "seed": seed, "fold": fold,
-                "size": str(size), "subset": subset, "n_train": len(selected),
-                **{name: metric(y[test], y_pred) for name, metric in METRICS.items()},
-            })
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(".tmp")
-    temporary.write_text(json.dumps(dict_to_json(rows)))
-    temporary.replace(path)
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset", required=True)
-    parser.add_argument("--model", choices=MODELS, required=True)
-    parser.add_argument("--seed", type=int, required=True)
-    parser.add_argument(
-        "--folds", nargs="+", type=int, help="Outer folds to run (default: all)"
+def parse_args(argv=None):
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        epilog=(
+            "Example: uv run python scripts/learning_curve.py --datasets "
+            "Bnci2014FnirsMA --sizes 5 10 15 --n-perms 10 5 2"
+        ),
     )
-    parser.add_argument("--sizes", nargs="+", type=int, default=[1, 2, 4, 8, 16])
-    parser.add_argument("--n-folds", type=int, default=5)
-    parser.add_argument("--device", default="cpu", choices=["cpu", "cuda", "mps"])
+    parser.add_argument("--datasets", nargs="+", required=True)
+    parser.add_argument("--pipelines", nargs="+", default=DEFAULT_PIPELINES)
+    parser.add_argument("--evaluation", default="WithinSession", choices=EVALUATIONS)
     parser.add_argument(
-        "--root", type=Path, default=get_results_cache_dir() / "learning_curve"
+        "--sizes", nargs="+", type=int, default=[5, 10, 15], help="Trials per class"
     )
-    args = parser.parse_args()
-    for fold in args.folds or range(args.n_folds):
-        run(args.dataset, args.model, args.seed, fold, args.sizes,
-            args.n_folds, args.device, args.root)
+    parser.add_argument(
+        "--n-perms",
+        nargs="+",
+        type=int,
+        default=[10],
+        help="Permutations, one value or one per size",
+    )
+    parser.add_argument(
+        "--test-size", type=float, default=0.2, help="Held-out share of the data"
+    )
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--paradigm", default="FNIRSClassification")
+    parser.add_argument("--n-jobs", type=int, default=-1)
+    parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--results", type=Path, help="Default: MOABB results root")
+    parser.add_argument("--output", type=Path, help="Output image path")
+    return parser.parse_args(argv)
+
+
+def run(args):
+    """Run the evaluation and return MOABB's results."""
+    paradigm = PARADIGMS[args.paradigm]()
+    configs = [config for path in args.pipelines for config in load_pipeline_file(path)]
+    pipelines = {
+        config["name"]: config["pipeline"]
+        for config in _seed_configs(configs, args.seed)
+    }
+    n_perms = args.n_perms[0] if len(args.n_perms) == 1 else np.array(args.n_perms)
+    evaluation = EVALUATIONS[args.evaluation](
+        paradigm=paradigm,
+        datasets=select_datasets(paradigm, args.datasets),
+        hdf5_path=str(args.results or results_dir()),
+        suffix=_seed_suffix("learning-curve", args.seed),
+        overwrite=args.overwrite,
+        n_jobs=args.n_jobs,
+        random_state=args.seed,
+        cache_config=CacheConfig(use=True, save_epochs=True, save_array=True),
+        cv_class=LearningCurveSplitter,
+        cv_kwargs={
+            "data_size": {"policy": "per_class", "value": np.array(args.sizes)},
+            "n_perms": n_perms,
+            "test_size": args.test_size,
+            "random_state": args.seed,
+        },
+    )
+    return evaluation.process(pipelines)
+
+
+def plot(results):
+    """Plot the subject-mean score against trials per class, one panel per dataset."""
+    scores = subject_mean(results, ["dataset", "pipeline", "data_size"]).mul(100)
+    names = scores.index.unique("dataset")
+    fig, axes = plt.subplots(
+        1, len(names), figsize=(4 * len(names), 3), sharey=True, squeeze=False
+    )
+    n_classes = results.groupby("dataset")["n_classes"].first()
+    for ax, name in zip(axes[0], names, strict=True):
+        for pipeline, curve in scores[name].groupby("pipeline"):
+            curve = curve.droplevel("pipeline")
+            ax.plot(curve.index / n_classes[name], curve, marker="o", label=pipeline)
+        ax.set_title(name)
+        ax.set_xlabel("Training trials per class")
+    axes[0, 0].set_ylabel("Score (%)")
+    axes[0, -1].legend(fontsize=7)
+    return fig
+
+
+def main(argv=None):
+    """Run the learning curves and save their plot."""
+    args = parse_args(argv)
+    results = run(args)
+    fig = plot(results)
+    output = args.output or (
+        results_dir() / "benchmark" / f"learning_curve_{args.evaluation}.png"
+    )
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    print(output)
 
 
 if __name__ == "__main__":

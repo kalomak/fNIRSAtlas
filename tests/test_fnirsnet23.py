@@ -1,74 +1,36 @@
 import numpy as np
 import pytest
-import torch
+from sklearn.base import clone
 
-from fnirsatlas.dl.fNIRSNet23 import fNIRSNet23
+torch = pytest.importorskip("torch")
 
-
-def test_fnirsnet23_forward():
-    """Test fNIRSNet23 forward."""
-    n, ct, c, t = 32, 2, 24, 76
-    mock_data = torch.randn(n, ct, c, t)
-    net = fNIRSNet23(c, t, ct)
-    net.forward(mock_data)
+from fnirsatlas.pipelines.dl import FNIRSClassifier, fNIRSNet23
 
 
-def test_fnirsnet23_forward_batch_size_one():
-    """Batch size 1 should still produce logits in training mode."""
-    n, ct, c, t = 1, 2, 24, 76
-    mock_data = torch.randn(n, ct, c, t)
-    net = fNIRSNet23(c, t, ct)
-    net.train()
+@pytest.mark.parametrize("batch_size", [1, 3])
+def test_fnirsnet23_returns_class_logits(batch_size):
+    model = fNIRSNet23(n_chs=4, T=16, n_ch_types=2, num_classes=3)
 
-    output = net.forward(mock_data)
+    logits = model(torch.ones(batch_size, 2, 4, 16))
 
-    assert output.shape == (n, 2)
+    assert logits.shape == (batch_size, 3)
 
 
-def test_fnirsnet23_forward_batch_size_one_eval():
-    """Batch size 1 should still produce logits in eval mode."""
-    n, ct, c, t = 1, 2, 24, 76
-    mock_data = torch.randn(n, ct, c, t)
-    net = fNIRSNet23(c, t, ct)
-    net.eval()
-
-    with torch.inference_mode():
-        output = net.forward(mock_data)
-
-    assert output.shape == (n, 2)
-
-
-def test_fnirsnet23_fit_last_batch_size_one():
-    """Training should handle a final singleton batch."""
-    n, ct, c, t = 33, 2, 24, 76
-    X = torch.randn(n, ct, c, t)
-    y = torch.randint(0, 2, (n,))
-    net = fNIRSNet23(c, t, ct, batch_size=32, n_epochs=1)
-
-    net.fit(X, y)
-
-    assert net.is_fitted_
-
-
-@pytest.mark.slow
-def test_fnirsnet23_full():
-    """Test fNIRSNet23 full pipe."""
-    from fnirsatlas.classification import classify_task
-    from fnirsatlas.config import get_classification_tasks
-    from fnirsatlas.dl.fNIRSNet23 import create_fnirsnet23_pipeline
-    from fnirsatlas.processed_dataset import load_processed_dataset
-
-    dataset_name = "bnci"
-    X, y, g, i = load_processed_dataset(dataset_name)
-    task = get_classification_tasks(dataset_name, cond2label=i["cond2label"])[0]
-    r = classify_task(
-        dataset_name,
-        task,
-        X=X,
-        y=y,
-        info=i,
-        groups=g,
-        classification_setting="cross",
-        get_clf=create_fnirsnet23_pipeline,
+def test_fnirsnet23_classifier_infers_dimensions_and_handles_singleton_batch():
+    X = np.random.default_rng(0).normal(size=(5, 2, 4, 16))
+    y = np.array(["left", "right", "left", "right", "left"])
+    classifier = FNIRSClassifier(
+        module=fNIRSNet23,
+        max_epochs=1,
+        batch_size=2,
+        device="cpu",
+        random_state=0,
     )
-    print(f"r {r}")
+
+    fitted = clone(classifier).fit(X, y)
+
+    assert fitted.module_.n_chs == 4
+    assert fitted.module_.T == 16
+    assert fitted.module_.n_ch_types == 2
+    assert fitted.module_.num_classes == 2
+    assert fitted.predict(X).shape == (5,)

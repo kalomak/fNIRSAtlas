@@ -1,0 +1,4 @@
+logging:
+  level: "INFO"
+  format: "%(levelname)s: %(message)s"
+  file: null

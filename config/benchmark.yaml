@@ -1,0 +1,22 @@
+# Benchmark grid for the Snakemake workflow. Override any key on the command
+# line, e.g. --config datasets='["Bnci2014FnirsMA"]'.
+#
+# Each pipeline definition declares the paradigms it runs under. Add a
+# `paradigms` key to keep only some of them.
+pipelines:
+  - pipelines/Windowed_LogReg.yml
+# Dataset codes to keep. Remove the key to run every dataset of each paradigm.
+datasets:
+  - Bnci2014FnirsMA
+evaluations:
+  - CrossSubject
+seeds:
+  - 0
+# null uses the MOABB results directory (MOABB_RESULTS) and <results>/benchmark.
+results: null
+output: null
+# Cores given to one evaluation cell.
+threads_per_job: 1
+# true fits each pipeline's declared parameters instead of searching its
+# param_grid.
+no_grid: false

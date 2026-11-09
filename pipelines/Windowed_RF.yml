@@ -1,0 +1,12 @@
+name: Windowed + Random Forest
+paradigms:
+  - FNIRSClassification
+pipeline:
+  - name: WindowedFeatureExtractor
+    from: fnirsatlas.pipelines
+    parameters:
+      n_windows: 6
+  - name: RandomForestClassifier
+    from: sklearn.ensemble
+    parameters:
+      n_estimators: 100

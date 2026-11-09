@@ -1,0 +1,16 @@
+name: Windowed + SVM-RBF
+paradigms:
+  - FNIRSClassification
+pipeline:
+  - name: WindowedFeatureExtractor
+    from: fnirsatlas.pipelines
+    parameters:
+      n_windows: 6
+  - name: StandardScaler
+    from: sklearn.preprocessing
+  - name: SVC
+    from: sklearn.svm
+    parameters:
+      kernel: rbf
+      C: 1.0
+      gamma: scale
