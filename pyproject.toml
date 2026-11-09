@@ -14,6 +14,9 @@ dependencies = [
     "scipy",
 ]
 
+[project.urls]
+Homepage = "https://github.com/kalomak/fNIRSAtlas"
+
 [project.optional-dependencies]
 aeon = [
     "aeon",
