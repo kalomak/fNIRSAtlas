@@ -13,12 +13,14 @@ from braindecode import EEGClassifier
 from braindecode.models import EEGNet
 
 from fnirsatlas import Bnci2014FnirsMA, FNIRSClassification
+from fnirsatlas.pipelines import ChannelMerger
 
 
 @pytest.mark.manual
 def test_braindecode_eegnet_infers_moabb_data_shape_on_fit():
     dataset = Bnci2014FnirsMA(subjects=[1])
     X, y, _ = FNIRSClassification().get_data(dataset=dataset, subjects=[1])
+    X = ChannelMerger().transform(X)
     _, y_encoded = np.unique(y[:8], return_inverse=True)
     classifier = EEGClassifier(
         module=EEGNet,

@@ -1,4 +1,4 @@
 Examples
 ========
 
-Use fnirsatlas data, pipelines, and MOABB evaluations in complete workflows.
+Complete workflows with fNIRSAtlas data, pipelines, and MOABB evaluations.
