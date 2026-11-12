@@ -1,6 +1,9 @@
+<p align="center"><img src="./docs/assets/fnirsatlas-logo.svg" width="160" alt="fNIRSAtlas logo"></p>
+
 # fNIRSAtlas
 
 [![PyPI](https://img.shields.io/pypi/v/fnirsatlas)](https://pypi.org/project/fnirsatlas/)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.10082-b31b1b)](https://arxiv.org/abs/2611.10082)
 
 fNIRSAtlas is a Python package for parsing, preprocessing, and classifying fNIRS datasets with a unified, extensible structure. It provides the largest fNIRS benchmark with multiple suites (motor, Mental Arithmetic (MA), Motor Imagery (MI), Emotion, MISC) and fully automatic pipeline from raw data to classification. The processed data can be easily exported with no dependencies.
 
@@ -424,6 +427,8 @@ See [Contributing](CONTRIBUTING.md). In short:
   title     = {{fNIRSAtlas}: A Large-Scale Benchmark for Functional Near-Infrared Spectroscopy Classification},
   author    = {M{\"a}kel{\"a}, Kalle and Ruotsalo, Tuukka},
   booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2026}
+  year      = {2026},
+  eprint    = {2611.10082},
+  archivePrefix = {arXiv}
 }
 ```
