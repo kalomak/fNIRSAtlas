@@ -5,6 +5,7 @@ import runpy
 from collections.abc import Mapping
 from pathlib import Path
 
+import h5py
 import pandas as pd
 import yaml
 from mne import get_config
@@ -20,7 +21,7 @@ from moabb.pipelines.utils import (
     parse_pipelines_from_directory,
 )
 
-from fnirsatlas import datasets
+from fnirsatlas import __version__, datasets
 from fnirsatlas.paradigms import (
     Emotion,
     FingerTapping,
@@ -140,6 +141,12 @@ def _seed_suffix(suffix, seed):
     return "_".join(part for part in (suffix, f"seed-{seed}") if part)
 
 
+def _record_version(path):
+    """Record the package version on a results file."""
+    with h5py.File(path, "a") as results:
+        results.attrs["fnirsatlas_version"] = __version__
+
+
 def _run_evaluation(
     evaluation_class,
     paradigm,
@@ -162,6 +169,7 @@ def _run_evaluation(
         **kwargs,
     )
     frame = evaluation.process(pipelines=pipelines, param_grid=param_grid)
+    _record_version(evaluation.results.filepath)
     frame["paradigm"] = paradigm_name
     frame["evaluation"] = evaluation_name
     return frame

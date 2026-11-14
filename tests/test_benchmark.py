@@ -1,5 +1,6 @@
 from types import SimpleNamespace
 
+import h5py
 import numpy as np
 import pandas as pd
 import pytest
@@ -7,7 +8,7 @@ from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GroupKFold, StratifiedKFold
 
-from fnirsatlas import benchmark
+from fnirsatlas import __version__, benchmark
 
 
 class _FakeParadigm:
@@ -32,12 +33,17 @@ def fake_benchmark(monkeypatch, tmp_path):
     ``run`` forwards to ``fnirs_benchmark``, ``calls`` collects the keyword
     arguments each evaluation was constructed with, and ``on_process`` is an
     optional hook called with the pipelines handed to every evaluation.
+    ``result_files`` lists the results file of every evaluation.
     """
-    runner = SimpleNamespace(calls=[], on_process=None)
+    runner = SimpleNamespace(calls=[], on_process=None, result_files=[])
 
     class FakeEvaluation:
         def __init__(self, **kwargs):
             runner.calls.append(kwargs)
+            path = tmp_path / f"results_{kwargs['suffix']}.hdf5"
+            h5py.File(path, "a").close()
+            runner.result_files.append(path)
+            self.results = SimpleNamespace(filepath=str(path))
 
         def process(self, pipelines, param_grid):
             if runner.on_process is not None:
@@ -95,6 +101,14 @@ def test_fnirs_benchmark_forwards_random_state(fake_benchmark):
     fake_benchmark.run([_config("Dummy", DummyClassifier())], random_state=7)
     (call,) = fake_benchmark.calls
     assert call["random_state"] == 7
+
+
+def test_results_file_records_package_version(fake_benchmark):
+    fake_benchmark.run([_config("Dummy", DummyClassifier())])
+
+    (path,) = fake_benchmark.result_files
+    with h5py.File(path, "r") as results:
+        assert results.attrs["fnirsatlas_version"] == __version__
 
 
 def _group_folds(cv_kwargs):
