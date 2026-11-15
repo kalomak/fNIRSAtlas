@@ -67,6 +67,8 @@ For GPU-enabled PyTorch, install torch separately following https://pytorch.org/
 
 ### Quick start
 
+Run a custom model on one dataset:
+
 ```bash
 pip install "fnirsatlas[process,classify]"
 ```
@@ -74,37 +76,34 @@ pip install "fnirsatlas[process,classify]"
 ```python
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from fnirsatlas.datasets import load_dataset
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from fnirsatlas.classification import run_benchmark
 from fnirsatlas.feature_extraction import WindowedFeatureExtractor
-
-# Downloads (44 MB) and processes the dataset on first use
-X, y, groups, info = load_dataset("luke2021", download="yes")
-print(X.shape, info["cond2label"])
 
 
 def get_clf(**kwargs):
     return make_pipeline(
         WindowedFeatureExtractor(n_windows=6, features=["mean"]),
         StandardScaler(),
-        LogisticRegression(),
+        LinearDiscriminantAnalysis(shrinkage="auto", solver="lsqr"),
     )
 
 
-# Cross-subject classification, prints a summary table
-results = run_benchmark(datasets=["luke2021"], get_clf=get_clf)
+# Downloads (44 MB) and processes the dataset on first use, prints a summary table
+results = run_benchmark(
+    datasets=["luke2021"],
+    get_clf=get_clf,
+    classification_setting="cross",  # cross-subject: test subjects are unseen in training
+)
 ```
 
 ```text
-(450, 40, 76) {'Control': 1, 'Tapping/Left': 2, 'Tapping/Right': 3}
-
 Summary:
-dataset          task                           #classes  #epochs     Cross%    Cross κ
+dataset          task                           #classes  #trials     Cross%    Cross κ
 ---------------------------------------------------------------------------------------
-Luke2021         FingerTap[L|R]                        2      300   84.0±9.2  68.0±18.5
+Luke2021         FingerTap[L|R]                        2      300   82.7±9.1  65.3±18.2
 ---------------------------------------------------------------------------------------
-MEAN                                                                84.0±9.2  68.0±18.5
+MEAN                                                                82.7±9.1  65.3±18.2
 ```
 
 ### Loading datasets programmatically

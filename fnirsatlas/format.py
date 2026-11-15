@@ -100,7 +100,7 @@ def _print_header(model_name, metrics):
     print(f"\nSummary{model_label}:")
     metric_headers = " ".join(f"{_get_metric_header(metric):>{VALUE_WIDTH}}" for metric in metrics)
     print(
-        f"{'dataset':<16} {'task':<30} {'#classes':>8} {'#epochs':>8} {metric_headers}"
+        f"{'dataset':<16} {'task':<30} {'#classes':>8} {'#trials':>8} {metric_headers}"
     )
     print("-" * 111)
 
@@ -251,8 +251,8 @@ def format_model_comparison_table(
     if not latex:
         model_headers = " ".join(f"{m:>{VALUE_WIDTH}}" for m in models)
         print(f"\n{metric} comparison:")
-        print(f"{'dataset':<16} {'task':<30} {'#cls':>5} {'#ep':>6} {model_headers}")
-        print("-" * (16 + 1 + 30 + 1 + 5 + 1 + 6 + 1 + (VALUE_WIDTH + 1) * len(models)))
+        print(f"{'dataset':<16} {'task':<30} {'#cls':>5} {'#trials':>7} {model_headers}")
+        print("-" * (16 + 1 + 30 + 1 + 5 + 1 + 7 + 1 + (VALUE_WIDTH + 1) * len(models)))
 
     for (dataset, task_desc), ref_results in task_data.items():
         n_classes = ref_results["n_classes"]
@@ -283,7 +283,7 @@ def format_model_comparison_table(
             model_cols = " ".join(f"{v:>{VALUE_WIDTH}}" for v in values)
             print(
                 f"{format_dataset_name(dataset):<16} {task_desc[:28]:<30} "
-                f"{n_classes:>5} {n_epochs:>6} {model_cols}"
+                f"{n_classes:>5} {n_epochs:>7} {model_cols}"
             )
 
     mean_cols_vals = [
@@ -300,6 +300,6 @@ def format_model_comparison_table(
         ]
         print(" & ".join(["Mean"] + [""] * (len(columns) - 1) + bold_means) + r" \\")
     else:
-        print("-" * (16 + 1 + 30 + 1 + 5 + 1 + 6 + 1 + (VALUE_WIDTH + 1) * len(models)))
+        print("-" * (16 + 1 + 30 + 1 + 5 + 1 + 7 + 1 + (VALUE_WIDTH + 1) * len(models)))
         mean_cols = " ".join(f"{v:>{VALUE_WIDTH}}" for v in mean_cols_vals)
-        print(f"{'MEAN':<16} {'':<30} {'':>5} {'':>6} {mean_cols}")
+        print(f"{'MEAN':<16} {'':<30} {'':>5} {'':>7} {mean_cols}")

@@ -2,9 +2,9 @@
 
 Processed datasets are saved as `.npz` files in `paths.processed_datasets` (default `~/mne_data/fnirsatlas/processed_datasets`). Each file contains:
 
-- `X`: Data array (n_epochs, n_channels, n_timepoints)
-- `y`: Class labels (n_epochs,)
-- `groups`: Subject IDs (n_epochs,)
+- `X`: Data array (n_trials, n_channels, n_timepoints)
+- `y`: Class labels (n_trials,)
+- `groups`: Subject IDs (n_trials,)
 - `info`: Metadata dictionary
 
 ## Simple Loading Example
