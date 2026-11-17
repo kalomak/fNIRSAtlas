@@ -17,9 +17,9 @@ disables a check.
 
 1. Invalid value check: Mark non-finite samples, and CW amplitude samples at or
    below zero, as bad per channel.
-2. Flat channel check: Mark CW channel windows of `quality_window=10.0` s as
-   bad when the amplitude standard deviation divided by its absolute mean is
-below `flat_threshold=1e-6`, e.g. a disconnected optode.
+2. Flat channel check: Mark channel windows of `quality_window=10.0` s as bad
+   when the standard deviation is at most `flat_threshold=1e-6` times the
+   absolute mean, e.g. a disconnected optode.
 3. SNR check: Mark CW channel windows of `quality_window` as bad when the
    amplitude mean divided by its standard deviation is at most
 `snr_threshold=10.0`.

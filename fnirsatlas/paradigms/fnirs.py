@@ -49,7 +49,7 @@ DEFAULT_SCORING = {
 PREPROCESSING = {
     # Source-detector distance in meters below which a channel is removed.
     "short_channel_threshold": 0.015,
-    # Largest relative standard deviation of a flat CW amplitude window.
+    # Largest relative standard deviation of a flat window.
     "flat_threshold": 1e-6,
     # Required CW amplitude SNR, scalp coupling index and cardiac peak spectral
     # power per window.

@@ -48,18 +48,19 @@ def mark_bad_segments_by_invalid_values(raw):
 
 
 def mark_bad_segments_by_flat(raw, threshold=None, window=10.0):
-    """Annotate constant CW windows as ``BAD_flat``, e.g. a disconnected optode.
+    """Annotate constant fNIRS windows as ``BAD_flat``, e.g. a disconnected optode.
 
-    A window is flat when its standard deviation divided by the absolute mean
-    is below ``threshold``. Flat windows pass the SNR check, whose SNR grows as
-    the standard deviation falls. Non-finite windows are left to
+    A window is flat when its standard deviation is at most ``threshold``
+    times its absolute mean. A constant window is flat for any channel type,
+    including one at zero. Flat CW windows pass the SNR check, whose SNR
+    grows as the standard deviation falls. Non-finite windows are left to
     `mark_bad_segments_by_invalid_values`. The remainder after the last full
     window is not checked.
 
     Parameters
     ----------
     raw : mne.io.BaseRaw
-        Recording containing continuous-wave amplitude channels. Modified in place.
+        fNIRS recording. Modified in place.
     threshold : float | None
         Largest relative standard deviation of a flat window. ``None``
         disables the check.
@@ -71,13 +72,12 @@ def mark_bad_segments_by_flat(raw, threshold=None, window=10.0):
     raw : mne.io.BaseRaw
         Input recording with flat windows annotated as ``BAD_flat``.
     """
-    if threshold is None or "fnirs_cw_amplitude" not in raw.get_channel_types():
+    if threshold is None:
         return raw
-    picks = mne.pick_types(raw.info, meg=False, fnirs="fnirs_cw_amplitude", exclude=[])
+    picks = mne.pick_types(raw.info, meg=False, fnirs=True, exclude=[])
     data, length = _windows(raw.get_data(picks=picks), raw.info["sfreq"], window)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        relative_std = data.std(axis=2) / np.abs(data.mean(axis=2))
-    rows, indices = np.nonzero(relative_std < threshold)
+    flat = data.std(axis=2) <= threshold * np.abs(data.mean(axis=2))
+    rows, indices = np.nonzero(flat)
     channels = [[raw.ch_names[picks[row]]] for row in rows]
     _annotate_bad_samples(
         raw, indices * length, (indices + 1) * length, channels, "BAD_flat"

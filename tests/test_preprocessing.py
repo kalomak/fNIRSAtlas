@@ -194,7 +194,10 @@ def test_mark_bad_segments_by_snr(third_channel, bads):
 
 
 def test_mark_bad_segments_by_flat():
-    """Two 1 s windows at 10 Hz. Relative SD 1e-8 is flat, 1e-4 is not."""
+    """Two 1 s windows at 10 Hz. Relative SD 1e-8 is flat, 1e-4 is not.
+
+    A constant hemoglobin window is flat although its mean is zero.
+    """
     rng = np.random.default_rng(0)
     data = 1 + rng.normal(0, 1e-4, (4, 20))
     data[2, 10:] = 1 + rng.normal(0, 1e-8, 10)
@@ -207,6 +210,15 @@ def test_mark_bad_segments_by_flat():
     ]
     assert spans == [(1.0, 1.0, ("S1_D1 850",))]
     assert out.annotations.description.tolist() == ["BAD_flat"]
+
+    hb = rng.normal(0, 1e-7, (2, 20))
+    hb[0, 10:] = 0
+    out = mark_bad_segments_by_flat(
+        _hb_raw_with_positions([[0, 0, 0]], hb), threshold=1e-6, window=1.0
+    )
+    assert [(a["onset"], a["ch_names"]) for a in out.annotations] == [
+        (1.0, ("S1_D1 hbo",))
+    ]
 
 
 def test_interpolate_nearest_uses_nearest_matching_chromophore():
