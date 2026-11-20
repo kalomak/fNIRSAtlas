@@ -10,7 +10,7 @@ difficulty and discrimination per dataset.
 py-irt is not a dependency and needs Python below 3.12. Run in an isolated
 environment::
 
-    uv run --isolated --python 3.12 --extra data --with py-irt==0.7.1 \
+    uv run --isolated --python 3.12 --with py-irt==0.7.1 \
         python scripts/examples/irt.py --evaluation CrossSubject \
         --pipelines Windowed_LDA eegnet fnirsnet23
 """

@@ -205,7 +205,7 @@ INTERVAL = [-2, 15]
 `dup > 0`: runs with identical data. Exclude the duplicate runs in the loader and document the pairs (e.g. `Klein2026FnirsMotion`).
 
 5. `METADATA` mismatches with the dataset and its first recording.
-`uv run --extra data python scripts/check_metadata.py <DatasetClass>`
+`uv run python scripts/check_metadata.py <DatasetClass>`
 
 Report these to the user at the end.
 

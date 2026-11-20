@@ -883,6 +883,9 @@ wheels = [
 name = "fnirsatlas"
 source = { editable = "." }
 dependencies = [
+    { name = "filelock" },
+    { name = "mne" },
+    { name = "moabb" },
     { name = "pyyaml" },
     { name = "scipy" },
 ]
@@ -893,11 +896,6 @@ aeon = [
 ]
 braindecode = [
     { name = "braindecode" },
-]
-data = [
-    { name = "filelock" },
-    { name = "mne" },
-    { name = "moabb" },
 ]
 dl = [
     { name = "einops" },
@@ -926,9 +924,9 @@ requires-dist = [
     { name = "aeon", marker = "extra == 'aeon'" },
     { name = "braindecode", marker = "extra == 'braindecode'" },
     { name = "einops", marker = "extra == 'dl'" },
-    { name = "filelock", marker = "extra == 'data'" },
-    { name = "mne", marker = "extra == 'data'", git = "https://github.com/mne-tools/mne-python?branch=main" },
-    { name = "moabb", marker = "extra == 'data'", git = "https://github.com/NeuroTechX/moabb?branch=develop" },
+    { name = "filelock" },
+    { name = "mne", git = "https://github.com/mne-tools/mne-python?branch=main" },
+    { name = "moabb", git = "https://github.com/NeuroTechX/moabb?branch=develop" },
     { name = "myst-parser", marker = "extra == 'docs'", specifier = ">=4.0.1" },
     { name = "pydata-sphinx-theme", marker = "extra == 'docs'", specifier = ">=0.16.1" },
     { name = "pyyaml" },
@@ -938,7 +936,7 @@ requires-dist = [
     { name = "sphinx-gallery", marker = "extra == 'docs'", specifier = ">=0.19.0" },
     { name = "torch", marker = "extra == 'dl'" },
 ]
-provides-extras = ["aeon", "braindecode", "data", "dl", "docs", "workflow"]
+provides-extras = ["aeon", "braindecode", "dl", "docs", "workflow"]
 
 [package.metadata.requires-dev]
 dev = [

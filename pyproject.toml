@@ -10,6 +10,9 @@ license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.11"
 dependencies = [
+    "filelock",
+    "mne>=1.13.2",
+    "moabb>=1.7.2",
     "pyyaml",
     "scipy",
 ]
@@ -20,11 +23,6 @@ Homepage = "https://github.com/kalomak/fNIRSAtlas"
 [project.optional-dependencies]
 aeon = [
     "aeon",
-]
-data = [
-    "filelock",
-    "mne>=1.13.2",
-    "moabb>=1.7.2",
 ]
 braindecode = [
     "braindecode",

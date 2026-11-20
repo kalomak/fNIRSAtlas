@@ -36,7 +36,7 @@ Run the check scripts in [`scripts/`](https://github.com/kalomak/fNIRSAtlas/tree
 | `uv run python scripts/check_montage.py <DatasetClass>` | Wrong channel positions |
 | `uv run python scripts/check_processed_data.py <DatasetClass>` | Data that is already filtered |
 | `uv run python scripts/check_dataset_quality.py <DatasetClass>` | Flat channels and duplicate runs |
-| `uv run --extra data python scripts/check_metadata.py <DatasetClass>` | `METADATA` that does not match the data |
+| `uv run python scripts/check_metadata.py <DatasetClass>` | `METADATA` that does not match the data |
 
 ## Benchmark
 

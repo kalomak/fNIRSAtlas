@@ -5,7 +5,7 @@ compares events and paradigm with the dataset, and compares sampling rate,
 fNIRS channel count, wavelengths (cw and od data only) and short-separation
 pair count with the first run of the first subject. Prints each problem.
 
-Example: uv run --extra data python scripts/check_metadata.py Buccino2016FnirsME
+Example: uv run python scripts/check_metadata.py Buccino2016FnirsME
 """
 
 import argparse
