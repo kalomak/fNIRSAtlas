@@ -1,5 +1,6 @@
 """Tests for the Liu2020 fNIRS datasets."""
 
+import shutil
 from collections import Counter
 
 import mne
@@ -10,6 +11,13 @@ from fnirsatlas.datasets.liu2020_fnirs import (
     SFREQ,
     Liu2020FnirsControl,
     Liu2020FnirsStroke,
+)
+
+# Extracting the Liu2020 download needs the external 7z tool.
+NEEDS_7Z = pytest.mark.xfail(
+    shutil.which("7z") is None and shutil.which("7zz") is None,
+    reason="7z is not installed",
+    raises=RuntimeError,
 )
 
 
@@ -38,14 +46,11 @@ def test_init(dataset, subjects, events, code):
     assert dataset.code == code
 
 
-@pytest.fixture(scope="module", params=[Liu2020FnirsControl, Liu2020FnirsStroke])
-def data(request):
-    return request.param().get_data(subjects=[1])
-
-
 @pytest.mark.data
-def test_data(data):
-    raw = data[1]["0fnirs"]["0"]
+@NEEDS_7Z
+@pytest.mark.parametrize("dataset_class", [Liu2020FnirsControl, Liu2020FnirsStroke])
+def test_data(dataset_class):
+    raw = dataset_class().get_data(subjects=[1])[1]["0fnirs"]["0"]
     assert isinstance(raw, mne.io.BaseRaw)
     assert raw.info["sfreq"] == pytest.approx(SFREQ)
     assert len(mne.pick_types(raw.info, fnirs="fnirs_cw_amplitude")) == 408
@@ -56,6 +61,7 @@ def test_data(data):
 
 
 @pytest.mark.data
+@NEEDS_7Z
 @pytest.mark.parametrize(
     ("dataset_class", "subject"),
     [(Liu2020FnirsControl, subject) for subject in range(1, 10)]
