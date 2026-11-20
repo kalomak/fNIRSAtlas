@@ -20,12 +20,19 @@ fNIRSAtlas is a Python package for parsing, preprocessing, and classifying fNIRS
 
 ### Installation
 
-Requires Python 3.11 or later and [uv](https://docs.astral.sh/uv/). From the repository root:
+Requires Python 3.11 or later. Install the pre-release from PyPI:
 
 ```bash
-uv sync
-uv sync --extra dl            # native PyTorch models
-uv sync --extra braindecode   # Braindecode models
+pip install --pre fnirsatlas
+pip install --pre "fnirsatlas[dl]"            # native PyTorch models
+```
+
+For development, install from source with [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone -b v2 https://github.com/kalomak/fNIRSAtlas.git
+cd fNIRSAtlas
+uv sync --all-extras
 ```
 
 ### Run a benchmark
@@ -69,7 +76,7 @@ See the runnable [examples](examples/).
 
 ## Documentation
 
-See the [documentation](docs/).
+See the [documentation](https://fnirsatlas.readthedocs.io).
 
 ## Contributing
 

@@ -2,18 +2,24 @@
 
 ## Installation
 
-fnirsatlas requires Python 3.11 or newer and [uv](https://docs.astral.sh/uv/).
-From the repository root, install the core package:
+fnirsatlas requires Python 3.11 or newer. Install the pre-release from PyPI:
 
 ```bash
-uv sync
+pip install --pre fnirsatlas
 ```
 
 Install optional dependencies when needed:
 
 ```bash
-uv sync --extra dl            # Native PyTorch models
-uv sync --extra braindecode   # Braindecode models
+pip install --pre "fnirsatlas[dl]"            # Native PyTorch models
+```
+
+For development, install from source with [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone -b v2 https://github.com/kalomak/fNIRSAtlas.git
+cd fNIRSAtlas
+uv sync --all-extras
 ```
 
 ## Run A Benchmark
