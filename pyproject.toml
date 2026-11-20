@@ -19,6 +19,7 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/kalomak/fNIRSAtlas"
+Documentation = "https://fnirsatlas.readthedocs.io"
 
 [project.optional-dependencies]
 aeon = [
