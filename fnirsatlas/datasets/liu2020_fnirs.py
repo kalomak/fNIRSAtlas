@@ -236,8 +236,9 @@ class Liu2020FnirsControl(_Liu2020Fnirs):
 
     Notes
     -----
-    The release has no optode geometry or source-detector map, so pair names
-    are synthetic and spatial analyses are unsupported. Leading all-zero
+    Not in the default benchmark: the release has no optode geometry or
+    source-detector map, so pair names are synthetic and spatial analyses are
+    unsupported. Leading all-zero
     startup samples are dropped. Controls and patients are separate datasets
     because their class meanings differ. Control subject 10 is absent from the
     release.
@@ -264,8 +265,9 @@ class Liu2020FnirsStroke(_Liu2020Fnirs):
 
     Notes
     -----
-    The release has no optode geometry or source-detector map, so pair names
-    are synthetic and spatial analyses are unsupported. Leading all-zero
+    Not in the default benchmark: the release has no optode geometry or
+    source-detector map, so pair names are synthetic and spatial analyses are
+    unsupported. Leading all-zero
     startup samples are dropped. Controls and patients are separate datasets
     because their class meanings differ.
 

@@ -38,8 +38,6 @@ BENCHMARK_DATASETS = (
     Guevara2024FnirsParkinson,
     Herff2014FnirsWorkload,
     Huang2021FnirsWorkload,
-    Liu2020FnirsControl,
-    Liu2020FnirsStroke,
     Luke2021FnirsTapping,
     Luke2021FnirsSpeech,
     Yucel2025FnirsTapping,
