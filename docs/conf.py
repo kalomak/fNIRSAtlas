@@ -24,6 +24,7 @@ html_theme = "pydata_sphinx_theme"
 sphinx_gallery_conf = {
     "examples_dirs": "../examples",
     "gallery_dirs": "auto_examples",
+    "filename_pattern": "(/plot_|/tutorial_)",
     "plot_gallery": False,
 }
 

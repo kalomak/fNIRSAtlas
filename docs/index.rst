@@ -5,7 +5,6 @@ fnirsatlas
    :maxdepth: 2
 
    getting_started
-   tutorials
    auto_examples/index
    pipelines
    paradigms

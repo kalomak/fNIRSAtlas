@@ -48,7 +48,7 @@ PIPELINE = {
 }
 ```
 
-To construct and evaluate a model directly instead of defining a loader file, see [Running a Custom Model](custom_models.md).
+To construct and evaluate a model directly instead of defining a loader file, see the {doc}`examples <auto_examples/index>`.
 
 
 ## PyTorch models
