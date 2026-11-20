@@ -1,7 +1,5 @@
 """Tests for the Luke2021FnirsSpeech dataset."""
 
-from pathlib import Path
-
 import mne
 import numpy as np
 import pytest
@@ -13,25 +11,11 @@ pytestmark = pytest.mark.data
 SUBJECTS = list(range(1, 18))
 EVENTS = {"Control": 1, "Noise": 2, "Speech": 3}
 SFREQ = 5.208333333333333
-LOCAL_BIDS_ROOT = (
-    Path.home() / "mne_data" / "fnirsatlas" / "datasets" / "Luke2024a" / "data"
-)
-
-
-def _local_download_subject(
-    self, subject, path=None, force_update=False, update_path=None, verbose=None
-):
-    del self, subject, path, force_update, update_path, verbose
-    return str(LOCAL_BIDS_ROOT)
 
 
 @pytest.fixture(scope="module")
 def data():
-    with pytest.MonkeyPatch.context() as monkeypatch:
-        monkeypatch.setattr(
-            Luke2021FnirsSpeech, "_download_subject", _local_download_subject
-        )
-        return Luke2021FnirsSpeech().get_data(subjects=[1])
+    return Luke2021FnirsSpeech().get_data(subjects=[1])
 
 
 class TestRawProperties:
@@ -91,10 +75,7 @@ class TestAnnotations:
 
 class TestAllSubjects:
     @pytest.mark.parametrize("subject", SUBJECTS)
-    def test_subject_loads(self, monkeypatch, subject):
-        monkeypatch.setattr(
-            Luke2021FnirsSpeech, "_download_subject", _local_download_subject
-        )
+    def test_subject_loads(self, subject):
         data = Luke2021FnirsSpeech().get_data(subjects=[subject])
         assert subject in data
         assert "01" in data[subject]

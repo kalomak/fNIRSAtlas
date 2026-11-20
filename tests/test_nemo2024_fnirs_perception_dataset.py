@@ -1,7 +1,5 @@
 """Tests for Nemo2024FnirsPerception dataset."""
 
-from pathlib import Path
-
 import mne
 import numpy as np
 import pytest
@@ -15,20 +13,10 @@ from fnirsatlas.datasets.nemo2024_fnirs import (
 SFREQ = 50.0
 N_FNIRS = 48
 N_CHANNELS = N_FNIRS + 1
-LOCAL_BIDS_ROOT = Path.home() / "mne_data" / "MNE-nemo2024fnirs-data" / "nemo-bids"
-
-
-def _local_download_subject(
-    self, subject, path=None, force_update=False, update_path=None, verbose=None
-):
-    return str(LOCAL_BIDS_ROOT)
 
 
 @pytest.fixture
-def dataset(monkeypatch):
-    monkeypatch.setattr(
-        Nemo2024FnirsPerception, "_download_subject", _local_download_subject
-    )
+def dataset():
     return Nemo2024FnirsPerception()
 
 
@@ -53,10 +41,7 @@ class TestDatasetInit:
     def test_code(self, dataset):
         assert dataset.code == "Nemo2024FnirsPerception"
 
-    def test_subject_selection(self, monkeypatch):
-        monkeypatch.setattr(
-            Nemo2024FnirsPerception, "_download_subject", _local_download_subject
-        )
+    def test_subject_selection(self):
         ds = Nemo2024FnirsPerception(subjects=[101, 105])
         assert ds.subject_list == [101, 105]
 
@@ -131,10 +116,7 @@ class TestAnnotations:
 @pytest.mark.data
 class TestAllSubjects:
     @pytest.mark.parametrize("subject", SUBJECTS)
-    def test_subject_loads(self, monkeypatch, subject):
-        monkeypatch.setattr(
-            Nemo2024FnirsPerception, "_download_subject", _local_download_subject
-        )
+    def test_subject_loads(self, subject):
         data = Nemo2024FnirsPerception().get_data(subjects=[subject])
         assert subject in data
         assert "0" in data[subject]

@@ -1,7 +1,5 @@
 """Tests for the Yucel2025FnirsTapping dataset."""
 
-from pathlib import Path
-
 import mne
 import numpy as np
 import pytest
@@ -17,25 +15,11 @@ RUNS = {
     "3right3s": "right3s",
 }
 SFREQ = 8.928571428571429
-LOCAL_BIDS_ROOT = (
-    Path.home() / "mne_data" / "fnirsatlas" / "datasets" / "Luke2024b" / "data"
-)
-
-
-def _local_download_subject(
-    self, subject, path=None, force_update=False, update_path=None, verbose=None
-):
-    del self, subject, path, force_update, update_path, verbose
-    return str(LOCAL_BIDS_ROOT)
 
 
 @pytest.fixture(scope="module")
 def data():
-    with pytest.MonkeyPatch.context() as monkeypatch:
-        monkeypatch.setattr(
-            Yucel2025FnirsTapping, "_download_subject", _local_download_subject
-        )
-        return Yucel2025FnirsTapping().get_data(subjects=[1])
+    return Yucel2025FnirsTapping().get_data(subjects=[1])
 
 
 def test_init_properties():
@@ -85,10 +69,7 @@ def test_reconstructed_events(data):
 @pytest.mark.data
 class TestAllSubjects:
     @pytest.mark.parametrize("subject", SUBJECTS)
-    def test_subject_loads(self, monkeypatch, subject):
-        monkeypatch.setattr(
-            Yucel2025FnirsTapping, "_download_subject", _local_download_subject
-        )
+    def test_subject_loads(self, subject):
         data = Yucel2025FnirsTapping().get_data(subjects=[subject])
         assert set(data[subject]["0"]) == set(RUNS)
         assert all(

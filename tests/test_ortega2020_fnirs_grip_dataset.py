@@ -1,7 +1,5 @@
 """Behavioral tests for the Ortega2020 fNIRS dataset."""
 
-from pathlib import Path
-
 import mne
 import numpy as np
 import pytest
@@ -12,20 +10,11 @@ from fnirsatlas.datasets.ortega2020_fnirs_grip import (
 )
 from fnirsatlas.paradigms import FNIRSClassification
 
-LOCAL_FILE = Path.home() / "mne_data/fnirsatlas/datasets/Ortega2020/hygrip.h5"
 SUBJECTS = list(range(1, 15))
 
 
-def _local_data_path(
-    self, subject, path=None, force_update=False, update_path=None, verbose=None
-):
-    del self, subject, path, force_update, update_path, verbose
-    return str(LOCAL_FILE)
-
-
 @pytest.fixture
-def dataset_and_raw(monkeypatch):
-    monkeypatch.setattr(Ortega2020FnirsGrip, "data_path", _local_data_path)
+def dataset_and_raw():
     dataset = Ortega2020FnirsGrip()
     raw = dataset.get_data(subjects=[1])[1]["0fnirs"]["0"]
     return dataset, raw
@@ -73,8 +62,7 @@ def test_event_counts(dataset_and_raw):
 
 @pytest.mark.parametrize("subject", SUBJECTS)
 @pytest.mark.data
-def test_all_subjects_load(monkeypatch, subject):
-    monkeypatch.setattr(Ortega2020FnirsGrip, "data_path", _local_data_path)
+def test_all_subjects_load(subject):
     raw = Ortega2020FnirsGrip().get_data(subjects=[subject])[subject]["0fnirs"]["0"]
     assert isinstance(raw, mne.io.BaseRaw)
     assert len(raw.ch_names) == 49
