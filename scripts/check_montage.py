@@ -142,6 +142,9 @@ def main():
     args = parse_args()
     mne.set_log_level("INFO")
     dataset = datasets.get_dataset(args.dataset)
+    if dataset.METADATA.acquisition.sensor_positions == "none":
+        print(f"{args.dataset} has no sensor positions. Nothing to check.")
+        return
     table = collect(dataset, dataset.subject_list[: args.subjects])
     print(table.to_string(index=False, float_format="{:.3f}".format))
     auc = table["auc"].median()
