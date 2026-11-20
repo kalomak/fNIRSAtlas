@@ -1,6 +1,6 @@
 """fnirsatlas - fNIRS extensions for MOABB."""
 
-__version__ = "0.1.1"
+__version__ = "2.0.0a1"
 from .benchmark import aggregate_seed_results, fnirs_benchmark
 from .datasets import get_dataset, list_datasets
 from .datasets.bak2019_fnirs_tapping import Bak2019FnirsTapping
