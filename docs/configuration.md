@@ -1,6 +1,6 @@
 ## Configuration
 
-Default settings are in [`fnirsatlas/configs/config.yaml`](../fnirsatlas/configs/config.yaml). To change them, write a YAML file containing only the keys to change:
+Default settings are in [`fnirsatlas/configs/config.yaml`](https://github.com/kalomak/fNIRSAtlas/blob/main/fnirsatlas/configs/config.yaml). To change them, write a YAML file containing only the keys to change:
 
 ```yaml
 paths:

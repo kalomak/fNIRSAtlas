@@ -15,7 +15,7 @@ Files touched:
 | `tests/test_smith2025_parser.py` | Tests for dataset-specific logic |
 | `docs/datasets/smith2025.md` | Dataset summary |
 
-Set up the environment as in [Running scripts](../README.md#running-scripts) and run all commands from the repository root.
+Set up the environment as in [Running scripts](index.md#running-scripts) and run all commands from the repository root.
 
 ## 1. Configure location and download
 
@@ -133,7 +133,7 @@ class Smith2025Parser(BaseFNIRSParser):
 
 ### Montage
 
-If the source files have no sensor positions, add `fnirsatlas/montages/smith2025_montage_3d.json`. `BaseFNIRSParser` subclasses set it automatically. Parsers that build the raw object themselves, e.g. BIDS parsers, call `self.set_montage(raw)` (see `fnirsatlas/parsers/nemo.py`). See the [montages README](../fnirsatlas/montages/README.md).
+If the source files have no sensor positions, add `fnirsatlas/montages/smith2025_montage_3d.json`. `BaseFNIRSParser` subclasses set it automatically. Parsers that build the raw object themselves, e.g. BIDS parsers, call `self.set_montage(raw)` (see `fnirsatlas/parsers/nemo.py`). See the [montages README](https://github.com/kalomak/fNIRSAtlas/blob/main/fnirsatlas/montages/README.md).
 
 ## 3. Register the parser
 
@@ -220,7 +220,7 @@ uv run pytest
 
 ## 9. Open a pull request
 
-See [Contributing](../CONTRIBUTING.md). Checklist:
+See [Contributing](https://github.com/kalomak/fNIRSAtlas/blob/main/CONTRIBUTING.md). Checklist:
 
 - [ ] Download works from a clean `paths.raw_datasets`
 - [ ] Parser registered in `PARSER_MAP` and `SUITE_MAP`

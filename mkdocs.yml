@@ -1,0 +1,48 @@
+site_name: fNIRSAtlas
+site_url: https://fnirsatlas.readthedocs.io/
+repo_url: https://github.com/kalomak/fNIRSAtlas
+edit_uri: blob/main/docs/
+
+theme:
+  name: material
+  logo: assets/fnirsatlas-logo.svg
+  favicon: assets/fnirsatlas-logo.svg
+
+nav:
+  - Home: index.md
+  - Configuration: configuration.md
+  - Classification: classification.md
+  - Classification tasks: classification_tasks.md
+  - Models: models.md
+  - Adding a model: adding_a_model.md
+  - Model comparison: model_comparison.md
+  - Processed dataset: processed_dataset.md
+  - Preprocessing pipeline: preprocessing.md
+  - Epoch intervals: epoch_intervals.md
+  - Downloads: downloads.md
+  - Adding a dataset: adding_a_dataset.md
+  - Existing parser info: parser_info.md
+  - Project structure: project_structure.md
+  - Datasets:
+      - datasets/bak2019.md
+      - datasets/bnci.md
+      - datasets/buccino2016.md
+      - datasets/cockx2023.md
+      - datasets/gao2024.md
+      - datasets/guevara2024.md
+      - datasets/herff2014.md
+      - datasets/huang2021.md
+      - datasets/luke2021.md
+      - datasets/luke2024a.md
+      - datasets/luke2024b.md
+      - datasets/nemo__afim.md
+      - datasets/nemo__empe.md
+      - datasets/ortega2020.md
+      - datasets/shader2021.md
+      - datasets/shin2016__ma.md
+      - datasets/shin2016__mi.md
+      - datasets/shin2018__nback.md
+      - datasets/shin2018__wg.md
+      - datasets/shin2018b.md
+      - datasets/shin2019.md
+      - datasets/yi2025.md
