@@ -34,6 +34,7 @@ from .datasets.shin2018_fnirs import Shin2018FnirsNBack, Shin2018FnirsWG
 from .datasets.shin2018_fnirs_ternary import Shin2018FnirsTernary
 from .datasets.shin2018b_fnirs_ma import Shin2018bFnirsMA
 from .datasets.yi2025_fnirs_mi import Yi2025FnirsMI
+from .datasets.yucel2025_fnirs import Yucel2025FnirsRest, Yucel2025FnirsSqueezing
 from .datasets.yucel2025_fnirs_tapping import Yucel2025FnirsTapping
 from .paradigms.fnirs import (
     BaseFNIRS,
@@ -100,6 +101,8 @@ __all__ = [
     "UnsqueezeLayer",
     "WindowedFeatureExtractor",
     "Yi2025FnirsMI",
+    "Yucel2025FnirsRest",
+    "Yucel2025FnirsSqueezing",
     "Yucel2025FnirsTapping",
     "aggregate_seed_results",
     "fnirs_benchmark",

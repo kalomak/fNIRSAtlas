@@ -33,6 +33,7 @@ from .shin2018_fnirs import Shin2018FnirsNBack, Shin2018FnirsWG
 from .shin2018_fnirs_ternary import Shin2018FnirsTernary
 from .shin2018b_fnirs_ma import Shin2018bFnirsMA
 from .yi2025_fnirs_mi import Yi2025FnirsMI
+from .yucel2025_fnirs import Yucel2025FnirsRest, Yucel2025FnirsSqueezing
 from .yucel2025_fnirs_tapping import Yucel2025FnirsTapping
 
 # Datasets paradigms use by default. Other exported datasets load only when named.
@@ -146,6 +147,8 @@ __all__ = [
     "Shin2018FnirsWG",
     "Shin2018bFnirsMA",
     "Yi2025FnirsMI",
+    "Yucel2025FnirsRest",
+    "Yucel2025FnirsSqueezing",
     "Yucel2025FnirsTapping",
     "get_dataset",
     "list_datasets",
