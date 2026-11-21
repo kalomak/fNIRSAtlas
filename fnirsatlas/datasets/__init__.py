@@ -18,6 +18,15 @@ from .luke2021_fnirs_speech import Luke2021FnirsSpeech
 from .luke2021_fnirs_tapping import Luke2021FnirsTapping
 from .nemo2024_fnirs import Nemo2024FnirsImagery, Nemo2024FnirsPerception
 from .ortega2020_fnirs_grip import Ortega2020FnirsGrip
+from .raible2026_fnirs import (
+    Raible2026FnirsEmotion,
+    Raible2026FnirsME,
+    Raible2026FnirsMI,
+    Raible2026FnirsMIFQ,
+    Raible2026FnirsMusic,
+    Raible2026FnirsRest,
+    Raible2026FnirsThreat,
+)
 from .shader2021_fnirs_speech import Shader2021FnirsSpeech
 from .shin2016_fnirs import Shin2016FnirsMA, Shin2016FnirsMI
 from .shin2018_fnirs import Shin2018FnirsNBack, Shin2018FnirsWG
@@ -44,6 +53,12 @@ BENCHMARK_DATASETS = (
     Nemo2024FnirsImagery,
     Nemo2024FnirsPerception,
     Ortega2020FnirsGrip,
+    Raible2026FnirsEmotion,
+    Raible2026FnirsME,
+    Raible2026FnirsMI,
+    Raible2026FnirsMIFQ,
+    Raible2026FnirsMusic,
+    Raible2026FnirsThreat,
     Shader2021FnirsSpeech,
     Shin2016FnirsMA,
     Shin2016FnirsMI,
@@ -116,6 +131,13 @@ __all__ = [
     "Nemo2024FnirsImagery",
     "Nemo2024FnirsPerception",
     "Ortega2020FnirsGrip",
+    "Raible2026FnirsEmotion",
+    "Raible2026FnirsME",
+    "Raible2026FnirsMI",
+    "Raible2026FnirsMIFQ",
+    "Raible2026FnirsMusic",
+    "Raible2026FnirsRest",
+    "Raible2026FnirsThreat",
     "Shader2021FnirsSpeech",
     "Shin2016FnirsMA",
     "Shin2016FnirsMI",

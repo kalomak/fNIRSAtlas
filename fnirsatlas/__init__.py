@@ -19,6 +19,15 @@ from .datasets.luke2021_fnirs_speech import Luke2021FnirsSpeech
 from .datasets.luke2021_fnirs_tapping import Luke2021FnirsTapping
 from .datasets.nemo2024_fnirs import Nemo2024FnirsImagery, Nemo2024FnirsPerception
 from .datasets.ortega2020_fnirs_grip import Ortega2020FnirsGrip
+from .datasets.raible2026_fnirs import (
+    Raible2026FnirsEmotion,
+    Raible2026FnirsME,
+    Raible2026FnirsMI,
+    Raible2026FnirsMIFQ,
+    Raible2026FnirsMusic,
+    Raible2026FnirsRest,
+    Raible2026FnirsThreat,
+)
 from .datasets.shader2021_fnirs_speech import Shader2021FnirsSpeech
 from .datasets.shin2016_fnirs import Shin2016FnirsMA, Shin2016FnirsMI
 from .datasets.shin2018_fnirs import Shin2018FnirsNBack, Shin2018FnirsWG
@@ -73,6 +82,13 @@ __all__ = [
     "Nemo2024FnirsImagery",
     "Nemo2024FnirsPerception",
     "Ortega2020FnirsGrip",
+    "Raible2026FnirsEmotion",
+    "Raible2026FnirsME",
+    "Raible2026FnirsMI",
+    "Raible2026FnirsMIFQ",
+    "Raible2026FnirsMusic",
+    "Raible2026FnirsRest",
+    "Raible2026FnirsThreat",
     "Shader2021FnirsSpeech",
     "Shin2016FnirsMA",
     "Shin2016FnirsMI",
