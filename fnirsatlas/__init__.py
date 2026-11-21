@@ -14,6 +14,7 @@ from .datasets.guevara2024_fnirs_parkinson import Guevara2024FnirsParkinson
 from .datasets.herff2014_fnirs_workload import Herff2014FnirsWorkload
 from .datasets.huang2021_fnirs_workload import Huang2021FnirsWorkload
 from .datasets.klein2026_fnirs_motion import Klein2026FnirsMotion
+from .datasets.klinkhammer2026_fnirs_me import Klinkhammer2026FnirsME
 from .datasets.liu2020_fnirs import Liu2020FnirsControl, Liu2020FnirsStroke
 from .datasets.luke2021_fnirs_speech import Luke2021FnirsSpeech
 from .datasets.luke2021_fnirs_tapping import Luke2021FnirsTapping
@@ -72,6 +73,7 @@ __all__ = [
     "Herff2014FnirsWorkload",
     "Huang2021FnirsWorkload",
     "Klein2026FnirsMotion",
+    "Klinkhammer2026FnirsME",
     "Liu2020FnirsControl",
     "Liu2020FnirsStroke",
     "Luke2021FnirsSpeech",

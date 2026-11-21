@@ -13,6 +13,7 @@ from .guevara2024_fnirs_parkinson import Guevara2024FnirsParkinson
 from .herff2014_fnirs_workload import Herff2014FnirsWorkload
 from .huang2021_fnirs_workload import Huang2021FnirsWorkload
 from .klein2026_fnirs_motion import Klein2026FnirsMotion
+from .klinkhammer2026_fnirs_me import Klinkhammer2026FnirsME
 from .liu2020_fnirs import Liu2020FnirsControl, Liu2020FnirsStroke
 from .luke2021_fnirs_speech import Luke2021FnirsSpeech
 from .luke2021_fnirs_tapping import Luke2021FnirsTapping
@@ -48,6 +49,7 @@ BENCHMARK_DATASETS = (
     Guevara2024FnirsParkinson,
     Herff2014FnirsWorkload,
     Huang2021FnirsWorkload,
+    Klinkhammer2026FnirsME,
     Luke2021FnirsTapping,
     Luke2021FnirsSpeech,
     Yucel2025FnirsTapping,
@@ -125,6 +127,7 @@ __all__ = [
     "Herff2014FnirsWorkload",
     "Huang2021FnirsWorkload",
     "Klein2026FnirsMotion",
+    "Klinkhammer2026FnirsME",
     "Liu2020FnirsControl",
     "Liu2020FnirsStroke",
     "Luke2021FnirsSpeech",
