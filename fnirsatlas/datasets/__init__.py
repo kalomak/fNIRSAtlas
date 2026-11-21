@@ -17,6 +17,7 @@ from .klinkhammer2026_fnirs_me import Klinkhammer2026FnirsME
 from .liu2020_fnirs import Liu2020FnirsControl, Liu2020FnirsStroke
 from .luke2021_fnirs_speech import Luke2021FnirsSpeech
 from .luke2021_fnirs_tapping import Luke2021FnirsTapping
+from .medvedeva2026_fnirs_stroke import Medvedeva2026FnirsStroke
 from .nemo2024_fnirs import Nemo2024FnirsImagery, Nemo2024FnirsPerception
 from .ortega2020_fnirs_grip import Ortega2020FnirsGrip
 from .raible2026_fnirs import (
@@ -53,6 +54,7 @@ BENCHMARK_DATASETS = (
     Klinkhammer2026FnirsME,
     Luke2021FnirsTapping,
     Luke2021FnirsSpeech,
+    Medvedeva2026FnirsStroke,
     Yucel2025FnirsTapping,
     Nemo2024FnirsImagery,
     Nemo2024FnirsPerception,
@@ -134,6 +136,7 @@ __all__ = [
     "Liu2020FnirsStroke",
     "Luke2021FnirsSpeech",
     "Luke2021FnirsTapping",
+    "Medvedeva2026FnirsStroke",
     "Nemo2024FnirsImagery",
     "Nemo2024FnirsPerception",
     "Ortega2020FnirsGrip",

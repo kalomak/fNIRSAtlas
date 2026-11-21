@@ -18,6 +18,7 @@ from .datasets.klinkhammer2026_fnirs_me import Klinkhammer2026FnirsME
 from .datasets.liu2020_fnirs import Liu2020FnirsControl, Liu2020FnirsStroke
 from .datasets.luke2021_fnirs_speech import Luke2021FnirsSpeech
 from .datasets.luke2021_fnirs_tapping import Luke2021FnirsTapping
+from .datasets.medvedeva2026_fnirs_stroke import Medvedeva2026FnirsStroke
 from .datasets.nemo2024_fnirs import Nemo2024FnirsImagery, Nemo2024FnirsPerception
 from .datasets.ortega2020_fnirs_grip import Ortega2020FnirsGrip
 from .datasets.raible2026_fnirs import (
@@ -81,6 +82,7 @@ __all__ = [
     "Liu2020FnirsStroke",
     "Luke2021FnirsSpeech",
     "Luke2021FnirsTapping",
+    "Medvedeva2026FnirsStroke",
     "MentalArithmetic",
     "MotorExecution",
     "MotorImagery",
