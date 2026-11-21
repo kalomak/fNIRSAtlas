@@ -5,11 +5,11 @@
 [![PyPI](https://img.shields.io/pypi/v/fnirsatlas)](https://pypi.org/project/fnirsatlas/)
 [![arXiv](https://img.shields.io/badge/arXiv-2611.10082-b31b1b)](https://arxiv.org/abs/2611.10082)
 
-fNIRSAtlas is a Python package for parsing, preprocessing, and classifying fNIRS datasets with a unified, extensible structure. It provides the largest fNIRS benchmark, covering motor, mental arithmetic, motor imagery, emotion, and other tasks, and a fully automatic pipeline from raw data to classification.
+fNIRSAtlas is a Python package for parsing, preprocessing, and classifying fNIRS datasets with a unified structure. It provides the largest fNIRS classification benchmark, and the largest resource for easily accessible fNIRS datasets.
 
 ## Features
 
-- 20+ public fNIRS datasets
+- 25+ public fNIRS datasets
 - Mental arithmetic, motor, n-back, and emotion classification paradigms
 - Within-session, cross-session, and cross-subject evaluation
 - YAML and Python pipelines for scikit-learn, PyTorch, and Braindecode
