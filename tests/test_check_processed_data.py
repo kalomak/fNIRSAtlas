@@ -9,6 +9,7 @@ from fnirsatlas.datasets import (
     Bak2019FnirsTapping,
     Bnci2014FnirsMA,
     Luke2021FnirsTapping,
+    Shadaydeh2025FnirsHyperscanning,
 )
 from scripts.check_processed_data import guess_filter
 
@@ -54,6 +55,7 @@ def test_filter_guess_accuracy_on_datasets():
         Bak2019FnirsTapping,
         Bnci2014FnirsMA,
         Luke2021FnirsTapping,
+        Shadaydeh2025FnirsHyperscanning,
     )
     relative_errors = []
     misses = []

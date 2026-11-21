@@ -29,6 +29,9 @@ from .datasets.raible2026_fnirs import (
     Raible2026FnirsRest,
     Raible2026FnirsThreat,
 )
+from .datasets.shadaydeh2025_fnirs_hyperscanning import (
+    Shadaydeh2025FnirsHyperscanning,
+)
 from .datasets.shader2021_fnirs_speech import Shader2021FnirsSpeech
 from .datasets.shin2016_fnirs import Shin2016FnirsMA, Shin2016FnirsMI
 from .datasets.shin2018_fnirs import Shin2018FnirsNBack, Shin2018FnirsWG
@@ -92,6 +95,7 @@ __all__ = [
     "Raible2026FnirsMusic",
     "Raible2026FnirsRest",
     "Raible2026FnirsThreat",
+    "Shadaydeh2025FnirsHyperscanning",
     "Shader2021FnirsSpeech",
     "Shin2016FnirsMA",
     "Shin2016FnirsMI",

@@ -28,6 +28,7 @@ from .raible2026_fnirs import (
     Raible2026FnirsRest,
     Raible2026FnirsThreat,
 )
+from .shadaydeh2025_fnirs_hyperscanning import Shadaydeh2025FnirsHyperscanning
 from .shader2021_fnirs_speech import Shader2021FnirsSpeech
 from .shin2016_fnirs import Shin2016FnirsMA, Shin2016FnirsMI
 from .shin2018_fnirs import Shin2018FnirsNBack, Shin2018FnirsWG
@@ -62,6 +63,7 @@ BENCHMARK_DATASETS = (
     Raible2026FnirsMIFQ,
     Raible2026FnirsMusic,
     Raible2026FnirsThreat,
+    Shadaydeh2025FnirsHyperscanning,
     Shader2021FnirsSpeech,
     Shin2016FnirsMA,
     Shin2016FnirsMI,
@@ -142,6 +144,7 @@ __all__ = [
     "Raible2026FnirsMusic",
     "Raible2026FnirsRest",
     "Raible2026FnirsThreat",
+    "Shadaydeh2025FnirsHyperscanning",
     "Shader2021FnirsSpeech",
     "Shin2016FnirsMA",
     "Shin2016FnirsMI",
